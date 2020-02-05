@@ -45,7 +45,7 @@ A faire :
 
 Repartition des taches : 
 	Ghada :
-
+		
 	Abdou :
 
 	Lauriane : 
