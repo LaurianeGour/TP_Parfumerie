@@ -1,15 +1,15 @@
-#Pour la base de donnée
+# Pour la base de donnée
 
 - Reflexion sur la base de donnée : Création d'un schéma entité-association
 - Poser nos tables et les attributs associées --> cf. fichier .ddd et .png associés
 - Implémentation de la BD avec PhpMyAdmin puis exportation en .sql --> cf. fichier .sql
 
-#Bootstrap
+# Bootstrap
 
 	lien de git :   https://github.com/T-PHP/Bootstrap-4-Ecommerce-Theme
 	Ouvrir à  l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
 
-###A faire
+### A faire
 
 | Nom de la page | EquivalenceIHM | S'inspirer de | A Faire |
 |:-------------------:|:--------------------:|:---------------:|:---------:|
@@ -25,14 +25,14 @@
 |  LstCommandesClient.html	 | Diapo8 | contact.html | J'ai pas d'idée de comment la faire bien, donc comme vous le sentez |
 | AddModifClient.html | Diapo9 | contact.html | Degager barre grise en haut de page + lien vers cette page (home / contact) + Degager le bloc avec adresse +  Faire un formulaire pour modifier les info d'un client ou ajouter un nouveau client |
 
-###Travail collaboratif : (Si vous avez d'autres idées hesitez pas)
+### Travail collaboratif : (Si vous avez d'autres idées hesitez pas)
 
 - Garder le fichier boostrap du github en local sur son pc
 - Créer les pages de notre en local sur son PC en utilisant les même fichiers css que ceux du git
 - Une fois une page finie la mettre dans le repertoire git (SiteParfumerie_Developpement) pour que tout le monde puisse y accèder
 - Prevenir lorsqu'une modif a été faite sur le git et sur quel fichier
 	
-###Repartition des taches : 
+### Repartition des taches : 
 
 	Ghada :
 		-InfoProduits.html ( pour le moment
