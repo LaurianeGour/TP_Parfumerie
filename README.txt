@@ -4,4 +4,5 @@
 ---------------------------------------------------------------------BOOTSTRAP ----------------------------------------------------------------
 
 lien de git :   https://github.com/T-PHP/Bootstrap-4-Ecommerce-Theme
-	
+Ouvrir à l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
+
