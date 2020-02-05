@@ -27,10 +27,10 @@
 
 ###Travail collaboratif : (Si vous avez d'autres idées hesitez pas)
 
-	Garder le fichier boostrap du github en local sur son pc
-	Créer les pages de notre en local sur son PC en utilisant les même fichiers css que ceux du git
-	Une fois une page finie la mettre dans le repertoire git (SiteParfumerie_Developpement) pour que tout le monde puisse y accèder
-	Prevenir lorsqu'une modif a été faite sur le git et sur quel fichier
+- Garder le fichier boostrap du github en local sur son pc
+- Créer les pages de notre en local sur son PC en utilisant les même fichiers css que ceux du git
+- Une fois une page finie la mettre dans le repertoire git (SiteParfumerie_Developpement) pour que tout le monde puisse y accèder
+- Prevenir lorsqu'une modif a été faite sur le git et sur quel fichier
 	
 ###Repartition des taches : 
 
