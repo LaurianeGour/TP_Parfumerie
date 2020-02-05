@@ -97,7 +97,7 @@ _________________________________________________________Travail collaboratif : 
 _________________________________________________________Repartition des taches : 
 
 	Ghada :
-		
+		-InfoProduits.html ( pour le moment)
 	Abdou :
 
 	Lauriane : 
