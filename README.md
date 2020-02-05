@@ -1,13 +1,13 @@
 #Pour la base de donnée
 
-- Reflexion sur la base de donnÃ©e : CrÃ©ation d'un schÃ©ma entitÃ© association
-- Poser nos tables et les attributs associÃ©es --> cf. fichier .ddd et .png associÃ©s
-- ImplÃ©mentation de la BD avec PhpMyAdmin puis exportation en .sql --> cf. fichier .sql
+- Reflexion sur la base de donnée : Création d'un schéma entité-association
+- Poser nos tables et les attributs associées --> cf. fichier .ddd et .png associés
+- Implémentation de la BD avec PhpMyAdmin puis exportation en .sql --> cf. fichier .sql
 
 #Bootstrap
 
 	lien de git :   https://github.com/T-PHP/Bootstrap-4-Ecommerce-Theme
-	Ouvrir Ã  l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
+	Ouvrir à  l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
 
 ###A faire
 
@@ -44,7 +44,7 @@
 		- AddModifProduit.html
 		- AddModifClient.html		
 
-	Lilian :
+	Lilian :s
 			
 	
 	
