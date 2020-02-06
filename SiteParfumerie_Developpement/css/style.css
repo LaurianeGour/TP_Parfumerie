@@ -58,11 +58,6 @@ footer {
 footer a {
     color: #f8f9fa!important
 }
-<<<<<<< HEAD
-.borderless td, .borderless th ,.borderless tr{
-    border: none;
-}
-=======
 
 
 .icon {
@@ -78,6 +73,10 @@ footer a {
   margin-right: 15px;
 }
 
+.espaceGrand{
+  margin-right: 15%;
+}
+
 .widthSearch{
   max-width: 30%;
 }
@@ -85,4 +84,3 @@ footer a {
 .front_bar_nav{
   color :white;
 }
->>>>>>> a052367a9b13efc1fc6ae35217240f53ff6fadbb
