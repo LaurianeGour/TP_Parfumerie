@@ -58,6 +58,14 @@ footer {
 footer a {
     color: #f8f9fa!important
 }
+<<<<<<< HEAD
+=======
+
+.borderless td, .borderless th ,.borderless tr{
+    border: none;
+}
+
+>>>>>>> 5f22c32d386571e9e2157e6da7cb358ea7b989ea
 
 
 .icon {
