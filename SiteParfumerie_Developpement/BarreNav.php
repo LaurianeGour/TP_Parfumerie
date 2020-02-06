@@ -12,52 +12,51 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
   <?php
-		$mysqli = new mysqli("localhost", "root", "", "bd_parfumerie");
-		if($mysqli->connect_errno) {
-			echo "Echec lors de la connexion à la base de données : (" . $mysqli->connect_errno . ")" . $mysqli->connect_error;
+    $mysqli = new mysqli("localhost", "root", "", "bd_parfumerie");
+    if($mysqli->connect_errno) {
+		    echo "Echec lors de la connexion à la base de données : (" . $mysqli->connect_errno . ")" . $mysqli->connect_error;
 		}
     mysqli_set_charset($mysqli, 'utf8');
-	date_default_timezone_set('Europe/Paris');
+	  date_default_timezone_set('Europe/Paris');
+  ?>
 
-    ?>
-
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="container">
-        <div class="collapse navbar-collapse justify-content-start">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark margBot">
+    <div class="container">
+      <div class="collapse navbar-collapse justify-content-start">
         <?php
-              $requete = "SELECT `nom`, `prenom` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
-              $resultat = $mysqli->query($requete);
-              $val=$resultat->fetch_assoc();
-              if($val == null)
-              {
-                echo'
-                <div class="espace front_bar_nav navbar-collapse align-items-center">
-                    <img class="icon espace" src="IconesSite\user.png">
-                    <a class="btn btn-secondary btn-number espace" href="ListeClient.php">
-                      <i class="fa fa-sign-in" aria-hidden="true">
-                        Connecter client
-                      </i>
-                    </a>
-                </div>
-                ';
-              }
-              else
-              {
-                echo'
-                <div class="espace">
-                  <a href="PageClient.php" class="navbar-brand bouton">
-                    <img class="icon" src="IconesSite\user.png">
-                '.$val['nom'].' '.$val['prenom'].'</a>
+          $requete = "SELECT `nom`, `prenom` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+          $resultat = $mysqli->query($requete);
+          $val=$resultat->fetch_assoc();
+          if($val == null)
+          {
+            echo'
+              <div class="espace front_bar_nav navbar-collapse align-items-center">
+                <img class="icon espace" src="IconesSite\user.png">
+                  <a class="btn btn-secondary btn-number espace" href="ListeClient.php">
+                    <i class="fa fa-sign-in" aria-hidden="true">
+                      Connecter client
+                    </i>
+                  </a>
+              </div>
+            ';
+          }
+          else
+          {
+            echo'
+              <div class="espace">
+                <a href="PageClient.php" class="navbar-brand bouton">
+                  <img class="icon" src="IconesSite\user.png">
+                    '.$val['nom'].' '.$val['prenom'].'
+                </a>
                 <a class="btn btn-secondary btn-number espace" href="DeconnecterClient.php">
                   <i class="fa fa-sign-out" aria-hidden="true">
                     Deconnecter client
                   </i>
                 </a>
-                </div>
-                ';
-              }
+              </div>
+            ';
+          }
         ?>
       </div>
         <form class="collapse navbar-collapse justify-content-center widthSearch">
@@ -75,7 +74,25 @@
           <div class="form-inline my-2 my-lg-0 espace" id="navbarsExampleDefault">
               <a class="btn btn-success btn-sm ml-3" href="cart.html">
                       <i class="fa fa-shopping-cart"></i> Cart
-                      <span class="badge badge-light">3</span>
+                      <span class="badge badge-light">
+                        <?php
+                          $requete = "SELECT COUNT(id_article) AS nbArticles FROM `articles_commandes` NATURAL JOIN `commande` JOIN `client_actif` ON `id_client`=`id_client_actif` WHERE `etat_commande` = 'Current being processed'";
+                          $resultat = $mysqli->query($requete);
+                          $val=$resultat->fetch_assoc();
+                          if($val == null)
+                          {
+                            echo'
+                              0
+                            ';
+                          }
+                          else
+                          {
+                            echo''.
+                              $val['nbArticles'].'
+                            ';
+                          }
+                        ?>
+                      </span>
               </a>
           </div>
           <a class="btn btn-secondary btn-number" href="DecoUser.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
@@ -113,39 +130,36 @@
 
 
   <!-- Footer : Lien non fonctionnels-->
-<footer class="text-light">
+  <footer class="text-light">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="justify-content-start espaceGrand">
-                <h5>Plan du site</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-                <ul class="list-unstyled">
-                    <li><a href="">Liste des clients</a></li>
-                    <li><a href="">Liste Client</a></li>
-                    <li><a href="">Liste des commandes d'un client</a></li>
-                    <li><a href="">Information produit</a></li>
-                    <li><a href="">Information client</a></li>
-                    <li><a href="">Ajouter ou modifier un produit</a></li>
-                    <li><a href="">Ajouter ou modifier un client</a></li>
-                    <li><a href="">Recapitulatif de commande</a></li>
-                </ul>
-            </div>
+      <div class="row justify-content-center">
+        <div class="justify-content-start espaceGrand">
+          <h5>Plan du site</h5>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+          <ul class="list-unstyled">
+                      <li class="interligne-2"><a href="">Liste des clients</a></li>
+                      <li class="interligne-2"><a href="">Liste Client</a></li>
+                      <li class="interligne-2"><a href="">Liste des commandes d'un client</a></li>
+                      <li class="interligne-2"><a href="">Information produit</a></li>
+                      <li class="interligne-2"><a href="">Information client</a></li>
+                      <li class="interligne-2"><a href="">Ajouter ou modifier un produit</a></li>
+                      <li class="interligne-2"><a href="">Ajouter ou modifier un client</a></li>
+                      <li class="interligne-2"><a href="">Recapitulatif de commande</a></li>
+                  </ul>
+      </div>
 
-            <div class="justify-content-end">
-                <h5>Contact</h5>
-                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-                <ul class="list-unstyled">
-                    <li><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
-                    <li><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
-                    <li><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
-                    <li><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
-                </ul>
-            </div>
-        </div>
+        <div class="justify-content-end">
+        <h5>Contact</h5>
+        <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+        <ul class="list-unstyled">
+          <li class="interligne-2"><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
+          <li class="interligne-2"><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
+          <li class="interligne-2"><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
+          <li class="interligne-2"><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
+        </ul>
+      </div>
+      </div>
     </div>
-</footer>
-
-
-
+  </footer>
 </body>
 </html>
