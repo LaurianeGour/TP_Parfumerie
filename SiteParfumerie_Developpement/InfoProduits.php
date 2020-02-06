@@ -1,7 +1,7 @@
 <?php
-$connect=mysqli_connect('localhost','root','','bd_parfumerie');
+$mysqli=new mysqli('localhost','root','','bd_parfumerie');
 $query='select * from produit';
-$result=mysqli_query($connect,$query);
+$result=$mysqli->query($query);
 ?>
 
 
@@ -94,7 +94,12 @@ $result=mysqli_query($connect,$query);
 
                         </a>
                         </br>
-                        <p class="text-center">perfume's name</p>
+                        <?php if($result!=null){
+        while($product=$result->fetch_assoc()){
+echo'
+
+                        <p class="text-center">'.$product['nom_article'].'</p>
+                                 
                     </div>
                 </div>
             </div>
@@ -104,14 +109,11 @@ $result=mysqli_query($connect,$query);
                 <div class="card bg-light mb-3">
                     <div class="card-body">
                         <form method="get" action="cart.html">
-<?php 
-        while($product=mysql_fetch_assoc($result)):
 
-    ?>
-                            <table class='table borderless'>
+                            <table class="table borderless">
                                 <tr>
                                     <th>Marque</th>
-                                    <th class="form-group"><?php echo $product.['marque']?></th>
+                                    <th class="form-group">'.$product['id_marque'].'</th>
                                   </tr>
                                   <tr>
                                     <th>Type</th>
@@ -127,12 +129,12 @@ $result=mysqli_query($connect,$query);
                                   </tr>
                                   <tr>
                                     <th>Ingredients</th>
-                                    <th class="form-group">x</th>
+                                    <th class="form-group">'.$product['ingredients'].'</th>
                                   </tr>
                                   
 
                             </table>
-                            <?php endwhile;?>
+                           ' ; }}?>
                           
 
                         </form>
