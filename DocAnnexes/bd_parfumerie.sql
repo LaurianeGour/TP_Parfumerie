@@ -30,21 +30,17 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE IF NOT EXISTS `article` (
-  `id_article` int(11) NOT NULL AUTO_INCREMENT,
-  `id_fournisseur` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
-  `id_volume` int(11) NOT NULL,
+  `id_article` integer NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `id_fournisseur` integer NOT NULL REFERENCES `fournisseur`(`id_fournisseur`),
+  `id_produit` integer NOT NULL REFERENCES `produit`(`id_produit`),
+  `id_volume` integer NOT NULL REFERENCES `volume`(`id_volume`),
   `date_derniere_maj_prix` varchar(50) NOT NULL,
   `url` varchar(150) NOT NULL,
   `prix_achat` float NOT NULL,
   `prix_achat_remise` float NOT NULL,
   `prix_vente` float NOT NULL,
-  `prix_vente_remise` float NOT NULL,
-  PRIMARY KEY (`id_article`),
-  KEY `id_fournisseur` (`id_fournisseur`),
-  KEY `id_produit` (`id_produit`),
-  KEY `id_volume` (`id_volume`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `prix_vente_remise` float NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `article`
@@ -62,16 +58,14 @@ INSERT INTO `article` (`id_article`, `id_fournisseur`, `id_produit`, `id_volume`
 
 DROP TABLE IF EXISTS `articles_commandes`;
 CREATE TABLE IF NOT EXISTS `articles_commandes` (
-  `id_client` int(11) NOT NULL AUTO_INCREMENT,
-  `id_article` int(11) NOT NULL,
-  `id_commande` int(11) NOT NULL,
+  `id_client` int(11) NOT NULL REFERENCES client( id_client ),
+  `id_article` int(11) NOT NULL REFERENCES article( id_article),
+  `id_commande` int(11) NOT NULL REFERENCES commande( id_commande),
   `quantite_commandee` int(11) NOT NULL,
   `prix_unitaire` float NOT NULL,
-  `remarque` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_client`,`id_article`,`id_commande`),
-  KEY `id_article` (`id_article`),
-  KEY `id_commande` (`id_commande`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `remarque` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_client`,`id_article`,`id_commande`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -88,9 +82,26 @@ CREATE TABLE IF NOT EXISTS `client` (
   `adresse` varchar(50) NOT NULL,
   `montant_depot` float NOT NULL,
   PRIMARY KEY (`id_client`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_naissance`, `adresse`, `montant_depot`) VALUES
+(2, 'DRIDI', 'Ghada', '01/01/1995', 'Vourouzé', 15);
+
 
 -- --------------------------------------------------------
+
+--
+-- Structure de la table `client_actif`
+--
+
+CREATE TABLE `client_actif` (
+  `id_client_actif` int(11) NOT NULL REFERENCES client( id_client ),
+  PRIMARY KEY(id_client_actif)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
 
 --
 -- Table structure for table `commande`
@@ -99,15 +110,14 @@ CREATE TABLE IF NOT EXISTS `client` (
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int(11) NOT NULL AUTO_INCREMENT,
-  `id_concierge` int(11) NOT NULL,
+  `id_concierge` int(11) NOT NULL REFERENCES concierge( id_concierge),
   `date_heure` varchar(50) NOT NULL,
   `montant_total` float NOT NULL,
   `montant_depot` float NOT NULL,
   `montant_livraison` float NOT NULL,
   `etat_commande` enum('Current being processed','Processed','Sent','Delivered','Canceled') NOT NULL,
-  PRIMARY KEY (`id_commande`),
-  KEY `id_concierge` (`id_concierge`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_commande`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -124,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `concierge` (
   `adresse_mail` varchar(50) NOT NULL,
   `mdp` varchar(50) NOT NULL,
   PRIMARY KEY (`id_concierge`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -139,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `conversion_monnaie` (
   `taux_conversion_es` float NOT NULL,
   `taux_conversion_se` float NOT NULL,
   PRIMARY KEY (`type_monnaie_sortie`,`type_monnaie_entree`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -150,12 +160,11 @@ CREATE TABLE IF NOT EXISTS `conversion_monnaie` (
 DROP TABLE IF EXISTS `facture`;
 CREATE TABLE IF NOT EXISTS `facture` (
   `id_facture` int(11) NOT NULL AUTO_INCREMENT,
-  `id_commande` int(11) NOT NULL,
+  `id_commande` int(11) NOT NULL REFERENCES commande( id_commande),
   `date_heure` varchar(50) NOT NULL,
   `montant_total` int(11) NOT NULL,
-  PRIMARY KEY (`id_facture`),
-  KEY `id_commande` (`id_commande`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_facture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -169,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
   `abreviation` varchar(50) NOT NULL,
   `nom_vendeur` varchar(50) NOT NULL,
   PRIMARY KEY (`id_fournisseur`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `fournisseur`
@@ -192,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `liste_marque` (
   `abreviation` varchar(50) NOT NULL,
   `nom_marque` varchar(50) NOT NULL,
   PRIMARY KEY (`id_marque`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `liste_marque`
@@ -213,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `parfum_volume` (
   `contenance` int(11) NOT NULL,
   `unitee` varchar(50) NOT NULL,
   PRIMARY KEY (`id_volume`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `parfum_volume`
@@ -235,15 +244,13 @@ INSERT INTO `parfum_volume` (`id_volume`, `contenance`, `unitee`) VALUES
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id_produit` int(11) NOT NULL AUTO_INCREMENT,
-  `id_type_produit` int(11) NOT NULL,
-  `id_marque` int(11) NOT NULL,
+  `id_type_produit` int(11) NOT NULL  REFERENCES type_produit( id_type_produit ),
+  `id_marque` int(11) NOT NULL REFERENCES marque( id_marque ),
   `nom_article` varchar(50) NOT NULL,
   `ingredients` varchar(50) NOT NULL,
   `photo` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_produit`),
-  KEY `id_type_produit` (`id_type_produit`),
-  KEY `id_marque` (`id_marque`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `produit`
@@ -264,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `type_produit` (
   `abreviation` varchar(50) NOT NULL,
   `type_produit` varchar(50) NOT NULL,
   PRIMARY KEY (`id_type_produit`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `type_produit`
