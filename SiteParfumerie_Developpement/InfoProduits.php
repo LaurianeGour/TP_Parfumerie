@@ -1,7 +1,7 @@
 <?php
-include_once('connexion.php');
-$query="select * from produit";
-$result=mysql_query($query);
+$connect=mysqli_connect('localhost','root','','bd_parfumerie');
+$query='select * from produit';
+$result=mysqli_query($connect,$query);
 ?>
 
 
@@ -104,33 +104,36 @@ $result=mysql_query($query);
                 <div class="card bg-light mb-3">
                     <div class="card-body">
                         <form method="get" action="cart.html">
+<?php 
+        while($product=mysql_fetch_assoc($result)):
 
-
+    ?>
                             <table class='table borderless'>
                                 <tr>
                                     <th>Marque</th>
-                                    <th class="form-group"></th>
+                                    <th class="form-group"><?php echo $product.['marque']?></th>
                                   </tr>
                                   <tr>
                                     <th>Type</th>
-                                    <th class="form-group"></th>
+                                    <th class="form-group">x</th>
                                   </tr>
                                   <tr>
                                     <th>Contenance</th>
-                                    <th class="form-group">cho9lela</th>
+                                    <th class="form-group">x</th>
                                   </tr>
                                   <tr>
                                     <th>Description</th>
-                                    <th class="form-group">to be done</th>
+                                    <th class="form-group">x</th>
                                   </tr>
                                   <tr>
                                     <th>Ingredients</th>
-                                    <th class="form-group"></th>
+                                    <th class="form-group">x</th>
                                   </tr>
                                   
 
                             </table>
-                         
+                            <?php endwhile;?>
+                          
 
                         </form>
 
