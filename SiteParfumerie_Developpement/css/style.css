@@ -58,3 +58,25 @@ footer {
 footer a {
     color: #f8f9fa!important
 }
+
+
+.icon {
+  width: 25px;
+  height: auto;
+}
+
+.bouton:hover{
+  transform:scale(1.15);
+}
+
+.espace{
+  margin-right: 15px;
+}
+
+.widthSearch{
+  max-width: 30%;
+}
+
+.front_bar_nav{
+  color :white;
+}
