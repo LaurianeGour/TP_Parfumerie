@@ -4,7 +4,7 @@
     <!-- Site meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Free Bootstrap 4 Ecommerce Template</title>
+    <title>Site Parfumerie</title>
     <!-- CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -73,7 +73,7 @@
         <div class="collapse navbar-collapse justify-content-end">
           <div class="form-inline my-2 my-lg-0 espace" id="navbarsExampleDefault">
               <a class="btn btn-success btn-sm ml-3" href="cart.html">
-                      <i class="fa fa-shopping-cart"></i> Cart
+                      <i class="fa fa-shopping-cart"></i> Panier
                       <span class="badge badge-light">
                         <?php
                           $requete = "SELECT COUNT(id_article) AS nbArticles FROM `articles_commandes` NATURAL JOIN `commande` JOIN `client_actif` ON `id_client`=`id_client_actif` WHERE `etat_commande` = 'Current being processed'";
@@ -140,10 +140,10 @@
                       <li class="interligne-2"><a href="">Liste des clients</a></li>
                       <li class="interligne-2"><a href="">Liste Client</a></li>
                       <li class="interligne-2"><a href="">Liste des commandes d'un client</a></li>
-                      <li class="interligne-2"><a href="">Information produit</a></li>
+                      <li class="interligne-2"><a href="InfoProduits.php">Information produit</a></li>
                       <li class="interligne-2"><a href="">Information client</a></li>
                       <li class="interligne-2"><a href="">Ajouter ou modifier un produit</a></li>
-                      <li class="interligne-2"><a href="">Ajouter ou modifier un client</a></li>
+                      <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
                       <li class="interligne-2"><a href="">Recapitulatif de commande</a></li>
                   </ul>
       </div>
@@ -161,5 +161,7 @@
       </div>
     </div>
   </footer>
+
+
 </body>
 </html>

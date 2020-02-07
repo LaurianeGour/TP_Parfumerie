@@ -1,8 +1,16 @@
 <?php
 $mysqli=new mysqli('localhost','root','','bd_parfumerie');
+<<<<<<< HEAD
 $query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
  on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque WHERE p.id_produit='.$_GET['Id'].';';
+=======
+$query='SELECT * FROM `produit` NATURAL JOIN `liste_marque` JOIN `type_produit` USING (id_type_produit) WHERE `id_produit`='.$_GET['Id'].';';
+>>>>>>> e34dff7d31460cf30883eb28d8e4fa4f53999c25
 $result=$mysqli->query($query);
+if($result!=null){
+  $product=$result->fetch_assoc();
+}
+
 ?>
 
 
@@ -13,7 +21,7 @@ $result=$mysqli->query($query);
     <!-- Site meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Free Bootstrap 4 Ecommerce Template</title>
+    <title>Site Parfumerie</title>
     <!-- CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -76,7 +84,7 @@ $result=$mysqli->query($query);
         <div class="collapse navbar-collapse justify-content-end">
           <div class="form-inline my-2 my-lg-0 espace" id="navbarsExampleDefault">
               <a class="btn btn-success btn-sm ml-3" href="cart.html">
-                      <i class="fa fa-shopping-cart"></i> Cart
+                      <i class="fa fa-shopping-cart"></i> Panier
                       <span class="badge badge-light">
                         <?php
                           $requete = "SELECT COUNT(id_article) AS nbArticles FROM `articles_commandes` NATURAL JOIN `commande` JOIN `client_actif` ON `id_client`=`id_client_actif` WHERE `etat_commande` = 'Current being processed'";
@@ -117,27 +125,29 @@ $result=$mysqli->query($query);
                 <div class="card bg-light mb-3">
                     <div class="card-body">
                         <a href="" data-toggle="modal" data-target="#productModal">
-                            <img class="img-fluid" src="img\la_vie_est_belle.jpg" />
-                            <p class="text-center">Zoom</p>
-
-
+                          <?php
+                              echo'
+                                <img class="img-fluid" src="'.$product['photo'].'" />
+                                  ';
+                          ?>
+                              <p class="text-center">Zoom</p>
                         </a>
                         </br>
                         <?php
-                        if($result!=null){
-                          while($product=$result->fetch_assoc()){
                             echo'
+                              <p class="text-center">'.$product['nom_article'].'</p>
+                              ';
 
-                        <p class="text-center">'.$product['nom_article'].'</p>
-
+                        ?>
                     </div>
                 </div>
             </div>
 
-            <!-- Add to cart -->
+
             <div class="col-12 col-lg-6 add_to_cart_block">
                 <div class="card bg-light mb-3">
                     <div class="card-body">
+<<<<<<< HEAD
                         <form method="get" action="cart.html">
 
                             <table class="table table-borderless">
@@ -168,13 +178,94 @@ $result=$mysqli->query($query);
 
 
                         </form>
-
-
+=======
+                          <table class="table borderless">
+                            <?php
+                                echo '
+                                    <tr>
+                                        <th>Marque</th>
+                                        <th class="form-group">'.$product['nom_marque'].'</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th class="form-group">'.$product['type_produit'].'</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Contenance</th>
+                                        <th class="form-group">
+                                ';
+                                  $requeteContenance = "SELECT `contenance`, `unitee` FROM `parfum_volume`
+                                                            NATURAL JOIN `article` WHERE `id_produit`=".$_GET['Id'].";";
+                                  $resultatCont = $mysqli->query($requeteContenance);
+                                  $unitee;
+                                  $derniereval=0;
+                                  while ($ligne = $resultatCont->fetch_assoc()) {
+                                      if($ligne['contenance'] != $derniereval){
+                                        echo''.$ligne['contenance'].' - ';
+                                        $unitee=$ligne['unitee'];
+                                        $derniereval=$ligne['contenance'];
+                                      }
+                                    }
+                                      echo''.$unitee.'
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <th>Ingredients</th>
+                                        <th class="form-group">'.$product['ingredients'].'</th>
+                                    </tr>';
+                                     ?>
+                          </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+>>>>>>> e34dff7d31460cf30883eb28d8e4fa4f53999c25
+
+
+
+    <div class="container mb-4 margBot">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">Fournisseur</th>
+                                <th scope="col" class="text-center">Prix d'achat</th>
+                                <th scope="col" class="text-center">Prix avec remise</th>
+                                <th scope="col" class="text-center">Prix de vente</th>
+                                <th scope="col" class="text-center">MAJ prix</th>
+                                <th scope="col" class="text-center">Lien vers le site</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          $requete = "SELECT * FROM fournisseur NATURAL JOIN article WHERE id_produit=".$_GET['Id'].";";
+                          $resultat = $mysqli->query($requete);
+                          while ($ligne = $resultat->fetch_assoc()) {
+                            echo'
+                            <tr>
+                              <td>'.$ligne['nom_vendeur'].'</td>
+                              <td>'.$ligne['prix_achat'].'</td>
+                              <td>'.$ligne['prix_achat_remise'].'</td>
+                              <td>'.$ligne['prix_vente'].'</td>
+                              <td>'.$ligne['date_derniere_maj_prix'].'</td>
+                              <td>'.$ligne['url'].'</td>
+                            </tr>
+                            ';
+                          }
+                          ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!-- Footer -->
