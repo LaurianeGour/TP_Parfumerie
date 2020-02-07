@@ -3,9 +3,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
 <<<<<<< HEAD
 $query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
  on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque WHERE p.id_produit='.$_GET['Id'].';';
-=======
-$query='SELECT * FROM `produit` NATURAL JOIN `liste_marque` JOIN `type_produit` USING (id_type_produit) WHERE `id_produit`='.$_GET['Id'].';';
->>>>>>> e34dff7d31460cf30883eb28d8e4fa4f53999c25
+
 $result=$mysqli->query($query);
 if($result!=null){
   $product=$result->fetch_assoc();
