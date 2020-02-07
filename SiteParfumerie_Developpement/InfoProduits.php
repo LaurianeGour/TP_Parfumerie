@@ -1,6 +1,7 @@
 <?php
 $mysqli=new mysqli('localhost','root','','bd_parfumerie');
-$query='SELECT * FROM `produit` WHERE `id_produit`='.$_GET['Id'].';';
+$query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
+ on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque WHERE p.id_produit='.$_GET['Id'].';';
 $result=$mysqli->query($query);
 ?>
 
@@ -139,14 +140,14 @@ $result=$mysqli->query($query);
                     <div class="card-body">
                         <form method="get" action="cart.html">
 
-                            <table class="table borderless">
+                            <table class="table table-borderless">
                                 <tr>
                                     <th>Marque</th>
-                                    <th class="form-group">'.$product['id_marque'].'</th>
+                                    <th class="form-group">'.$product['nom_marque'].'</th>
                                   </tr>
                                   <tr>
                                     <th>Type</th>
-                                    <th class="form-group">x</th>
+                                    <th class="form-group">'.$product['type_produit'].'</th>
                                   </tr>
                                   <tr>
                                     <th>Contenance</th>
