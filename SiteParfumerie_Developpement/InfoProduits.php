@@ -1,11 +1,8 @@
 <?php
 $mysqli=new mysqli('localhost','root','','bd_parfumerie');
-<<<<<<< HEAD
 $query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
  on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque WHERE p.id_produit='.$_GET['Id'].';';
-=======
-$query='SELECT * FROM `produit` NATURAL JOIN `liste_marque` JOIN `type_produit` USING (id_type_produit) WHERE `id_produit`='.$_GET['Id'].';';
->>>>>>> e34dff7d31460cf30883eb28d8e4fa4f53999c25
+
 $result=$mysqli->query($query);
 if($result!=null){
   $product=$result->fetch_assoc();
@@ -147,38 +144,7 @@ if($result!=null){
             <div class="col-12 col-lg-6 add_to_cart_block">
                 <div class="card bg-light mb-3">
                     <div class="card-body">
-<<<<<<< HEAD
-                        <form method="get" action="cart.html">
 
-                            <table class="table table-borderless">
-                                <tr>
-                                    <th>Marque</th>
-                                    <th class="form-group">'.$product['nom_marque'].'</th>
-                                  </tr>
-                                  <tr>
-                                    <th>Type</th>
-                                    <th class="form-group">'.$product['type_produit'].'</th>
-                                  </tr>
-                                  <tr>
-                                    <th>Contenance</th>
-                                    <th class="form-group">x</th>
-                                  </tr>
-                                  <tr>
-                                    <th>Description</th>
-                                    <th class="form-group">x</th>
-                                  </tr>
-                                  <tr>
-                                    <th>Ingredients</th>
-                                    <th class="form-group">'.$product['ingredients'].'</th>
-                                  </tr>
-
-
-                            </table>
-                           ' ; }}?>
-
-
-                        </form>
-=======
                           <table class="table borderless">
                             <?php
                                 echo '
@@ -220,7 +186,6 @@ if($result!=null){
             </div>
         </div>
     </div>
->>>>>>> e34dff7d31460cf30883eb28d8e4fa4f53999c25
 
 
 
