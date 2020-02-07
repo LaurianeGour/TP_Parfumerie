@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,12 +16,12 @@
   <?php
     $mysqli = new mysqli("localhost", "root", "", "bd_parfumerie");
     if($mysqli->connect_errno) {
-		    echo "Echec lors de la connexion à la base de données : (" . $mysqli->connect_errno . ")" . $mysqli->connect_error;
-		}
+        echo "Echec lors de la connexion à la base de données : (" . $mysqli->connect_errno . ")" . $mysqli->connect_error;
+    }
     mysqli_set_charset($mysqli, 'utf8');
-	  date_default_timezone_set('Europe/Paris');
-  ?>
+    date_default_timezone_set('Europe/Paris');
 
+  ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark margBot">
     <div class="container">
       <div class="collapse navbar-collapse justify-content-start">
@@ -95,7 +96,7 @@
                       </span>
               </a>
           </div>
-          <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
+          <a class="btn btn-secondary btn-number" href="DecoUser.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
               Deconnection
             </i>
@@ -106,26 +107,91 @@
   </nav>
 
 
+  <?php
+  $requete = "SELECT * FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+  $resultat = $mysqli->query($requete);
+  $val=$resultat->fetch_assoc();
+   ?>
 
 
-  <div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+
+  <div class="container margBot">
+      <div class="row">
+          <div class="col">
+              <div class="card">
+                <?php
+                  if($val == null)
+                  {
+                    echo'<div class="card-header bg-primary text-white">
+                       Inscrire un nouveau client
+                       </div>
+                    ';
+                  }else{
+                    echo'<div class="card-header bg-primary text-white">
+                        Modifier le client: '.$val['nom'].' '.$val['prenom']
+                       .'</div>
+                    ';
+                  }
+              ?>
+
+                  <div class="card-body">
+                      <form method="post" action="ExeAddModifClient.php">
+                          <?php
+                            if($val == null)
+                            {
+                              echo'
+                              <div class="form-group">
+                                  <label for="name">First name </label>
+                                  <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="emailHelp" placeholder="Enter first name" required>
+                                  <label for="name">Last name</label>
+                                  <input type="text" class="form-control" id="Lname" name="Lname" aria-describedby="emailHelp" placeholder="Enter last name" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="email">Address</label>
+                                  <input type="text" class="form-control" id="Address" name="Address" aria-describedby="emailHelp" placeholder="Enter address" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="email"> Birth day</label>
+                                  <input type="text" class="form-control" id="Birth" name="Birth" aria-describedby="emailHelp" placeholder="Enter birth date" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="email"> Deposit money</label>
+                                  <input type="number" step="0.01" class="form-control" id="Depot" name="Depot" aria-describedby="emailHelp" placeholder="Deposit money">
+                              </div>
+                              ';
+                            }else{
+                              echo'
+                              <div class="form-group">
+                                  <label for="Fname">First name </label>
+                                  <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="emailHelp" value="'.$val['prenom'].'" placeholder="Enter first name" required>
+                                  <label for="Lname">Last name</label>
+                                  <input type="text" class="form-control" id="Lname" name="Lname" aria-describedby="emailHelp" value="'.$val['nom'].'" placeholder="Enter last name" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="Address">Address</label>
+                                  <input type="text" class="form-control" id="Address" name="Address" aria-describedby="emailHelp" value="'.$val['adresse'].'" placeholder="Enter address" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="Birth"> Birth day</label>
+                                  <input type="text" class="form-control" id="Birth" name="Birth" aria-describedby="emailHelp" value="'.$val['date_naissance'].'" placeholder="Enter birth date" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="Money"> Deposit money</label>
+                                  <input type="number" step="0.01" class="form-control" id="Depot" name="Depot" aria-describedby="emailHelp" value="'.$val['montant_depot'].'" placeholder="Enter amount" required>
+                              </div>
+                              ';
+                            }
+                          ?>
+                          <div class="mx-auto">
+                            <button type="submit" class="btn btn-primary text-right">Submit</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
+
 
 
 
@@ -161,5 +227,6 @@
       </div>
     </div>
   </footer>
+
 </body>
 </html>
