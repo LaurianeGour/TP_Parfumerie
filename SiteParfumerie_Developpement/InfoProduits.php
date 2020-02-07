@@ -112,27 +112,38 @@ if($result!=null){
         </div>
       </div>
   </nav>
-
-
+  <div class="container">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="category.html">Categorie</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Parfum</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
 
     <div class="container">
         <div class="row">
             <!-- Image -->
-            <div  >
-                <div class="card bg-light mb-3">
+            <div class="col-12 col-lg-6 ">
+                <div class="card bg-light mb-3 text-center">
                     <div class="card-body">
                         <a href="" data-toggle="modal" data-target="#productModal">
                           <?php
                               echo'
-                                <img class="img-fluid" width="300" height="300" src="'.$product['photo'].'" />
+                                <img class="img-fluid text-center" width="300" height="300" src="'.$product['photo'].'" />
                                   ';
                           ?>
-                             
+                             <p class="text-center">Zoom</p> 
                         </a>
                         </br>
                         <?php
                             echo'
-                              <p class="text-center">'.$product['nom_article'].'</p>
+                            <h2 style="color:#fe7f9c">'.$product['nom_article'].'</h2>
                               ';
 
                         ?>
@@ -145,20 +156,20 @@ if($result!=null){
                 <div class="card bg-light mb-3">
                     <div class="card-body">
 
-                          <table class="table table-borderless">
+                          <table class="table table-borderless ">
                             <?php
                                 echo '
                                     <tr>
-                                        <th>Marque</th>
-                                        <th class="form-group">'.$product['nom_marque'].'</th>
+                                        <th style="color: grey;">Marque</th>
+                                        <th class="form-group" style="color: grey;">'.$product['nom_marque'].'</th>
                                     </tr>
                                     <tr>
-                                        <th>Type</th>
-                                        <th class="form-group">'.$product['type_produit'].'</th>
+                                        <th style="color: grey;">Type</th>
+                                        <th class="form-group" style="color: grey;">'.$product['type_produit'].'</th>
                                     </tr>
                                     <tr>
-                                        <th>Contenance</th>
-                                        <th class="form-group">
+                                        <th style="color: grey;">Contenance</th>
+                                        <th class="form-group" style="color: grey;">
                                 ';
                                   $requeteContenance = "SELECT `contenance`, `unitee` FROM `parfum_volume`
                                                             NATURAL JOIN `article` WHERE `id_produit`=".$_GET['Id'].";";
@@ -176,12 +187,20 @@ if($result!=null){
                                         </th>
                                       </tr>
                                       <tr>
-                                        <th>Ingredients</th>
-                                        <th class="form-group">'.$product['ingredients'].'</th>
+                                        <th style="color: grey;">Ingredients</th>
+                                        <th class="form-group" style="color: grey;">'.$product['ingredients'].'</th>
                                     </tr>';
                                      ?>
                           </table>
+                          <div class="product_rassurance">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br/>Fast delivery</li>
+                            <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br/>Secure payment</li>
+                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/>+33 1 22 54 65 60</li>
+                        </ul>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -199,6 +218,7 @@ if($result!=null){
                                 <th scope="col" class="text-center">Boutique</th>
                                 <th scope="col" class="text-center">Prix de vente</th>
                                 <th scope="col" class="text-center">MAJ prix</th>
+                                <th scope="col" class="text-center">Quantite</th>
                                 <th scope="col" class="text-center">Offre du marchand</th>
                                 <th> </th>
                             </tr>
@@ -214,6 +234,23 @@ if($result!=null){
                               <td scope="row" class="text-center">'.$ligne['nom_vendeur'].'</td>
                               <td scope="row" class="text-center">'.$ligne['prix_vente'].'</td>
                               <td scope="row" class="text-center">'.$ligne['date_derniere_maj_prix'].'</td>
+                              <td scope="row" style="align:center">
+                             
+                                <div class="input-group ">
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="quantity-left-minus btn btn-number "  data-type="minus" data-field="">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <input type="text" class="input-box text-center"  id="quantity" name="quantity" min="1" max="100" value="1">
+                                    <div class="input-group-append">
+                                        <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                           
+                              </td>
                               <td scope="row" class="text-center"> <a href="'.$ligne['url'].'">VOIR L\'OFFRE</a></td>
                             </tr>
                             ';
@@ -278,7 +315,9 @@ if($result!=null){
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img class="img-fluid" src="https://dummyimage.com/1200x1200/55595c/fff" />
+                <?php
+                                echo '
+                    <img class="img-fluid" src="'.$product['photo'].'" />'?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

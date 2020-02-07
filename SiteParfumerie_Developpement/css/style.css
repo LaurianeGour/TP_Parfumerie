@@ -102,3 +102,6 @@ footer a {
 .table-borderless > thead > tr > th {
     border: none;
 }
+.input-box{
+  width:60px
+}
