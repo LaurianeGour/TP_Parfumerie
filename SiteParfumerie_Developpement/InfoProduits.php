@@ -118,16 +118,16 @@ if($result!=null){
     <div class="container">
         <div class="row">
             <!-- Image -->
-            <div class="col-12 col-lg-6">
+            <div  >
                 <div class="card bg-light mb-3">
                     <div class="card-body">
                         <a href="" data-toggle="modal" data-target="#productModal">
                           <?php
                               echo'
-                                <img class="img-fluid" src="'.$product['photo'].'" />
+                                <img class="img-fluid" width="300" height="300" src="'.$product['photo'].'" />
                                   ';
                           ?>
-                              <p class="text-center">Zoom</p>
+                             
                         </a>
                         </br>
                         <?php
@@ -145,7 +145,7 @@ if($result!=null){
                 <div class="card bg-light mb-3">
                     <div class="card-body">
 
-                          <table class="table borderless">
+                          <table class="table table-borderless">
                             <?php
                                 echo '
                                     <tr>
@@ -190,40 +190,36 @@ if($result!=null){
 
 
     <div class="container mb-4 margBot">
-        <div class="row">
+        <div class="class="card bg-light mb-3"">
             <div class="col-12">
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <thead>
+                    <thead class="thead-light">
                             <tr>
-                                <th scope="col" class="text-center">Fournisseur</th>
-                                <th scope="col" class="text-center">Prix d'achat</th>
-                                <th scope="col" class="text-center">Prix avec remise</th>
+                                <th scope="col" class="text-center">Boutique</th>
                                 <th scope="col" class="text-center">Prix de vente</th>
                                 <th scope="col" class="text-center">MAJ prix</th>
-                                <th scope="col" class="text-center">Lien vers le site</th>
+                                <th scope="col" class="text-center">Offre du marchand</th>
                                 <th> </th>
                             </tr>
                         </thead>
-                        <tbody>
+                       
+                       <tbody>
                           <?php
                           $requete = "SELECT * FROM fournisseur NATURAL JOIN article WHERE id_produit=".$_GET['Id'].";";
                           $resultat = $mysqli->query($requete);
                           while ($ligne = $resultat->fetch_assoc()) {
                             echo'
                             <tr>
-                              <td>'.$ligne['nom_vendeur'].'</td>
-                              <td>'.$ligne['prix_achat'].'</td>
-                              <td>'.$ligne['prix_achat_remise'].'</td>
-                              <td>'.$ligne['prix_vente'].'</td>
-                              <td>'.$ligne['date_derniere_maj_prix'].'</td>
-                              <td>'.$ligne['url'].'</td>
+                              <td scope="row" class="text-center">'.$ligne['nom_vendeur'].'</td>
+                              <td scope="row" class="text-center">'.$ligne['prix_vente'].'</td>
+                              <td scope="row" class="text-center">'.$ligne['date_derniere_maj_prix'].'</td>
+                              <td scope="row" class="text-center"> <a href="'.$ligne['url'].'">VOIR L\'OFFRE</a></td>
                             </tr>
                             ';
                           }
                           ?>
-
-                        </tbody>
+                      </tbody>
                     </table>
                 </div>
             </div>
@@ -315,6 +311,8 @@ if($result!=null){
             });
 
         });
+    
+       
     </script>
 </body>
 
