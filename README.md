@@ -39,12 +39,15 @@
 	Abdou :
 
 	Lauriane : 
-		- BarNav
-		- Barre du bas
-		- AddModifProduit.html
-		- AddModifClient.html		
+		- BarNav -> fait
+		- Barre du bas -> fait
+		- AddModifClient.php	 -> fait	
 
-	Lilian :s
+		- ListeClients.php -> Commencé
+				
+		- AddModifProduit.html
+
+	Lilian :
 			
 	
 	

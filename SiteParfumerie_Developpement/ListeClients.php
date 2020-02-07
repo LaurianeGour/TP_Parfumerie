@@ -19,7 +19,6 @@
     }
     mysqli_set_charset($mysqli, 'utf8');
     date_default_timezone_set('Europe/Paris');
-
   ?>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark margBot">
     <div class="container">
@@ -59,11 +58,11 @@
           }
         ?>
       </div>
-        <form class="collapse navbar-collapse justify-content-center widthSearch">
+        <form method="get" action="RechercheProduit.php" class="collapse navbar-collapse justify-content-center widthSearch">
             <div class="input-group input-group-sm">
                 <input type="text" class="form-control" placeholder="Search a product">
                 <div class="input-group-append">
-                    <button onclick="window.location.href = 'RechercheProduit.php';" type="button" class="btn btn-secondary btn-number" >
+                    <button type= 'submit' type="button" class="btn btn-secondary btn-number" >
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -104,6 +103,73 @@
         </div>
       </div>
   </nav>
+
+
+  <div class="container">
+      <div class="row">
+          <div class="col">
+            <div class="breadcrumb">
+              <div>
+                RECHERCHE PAR NOM
+              </div>
+              <div>
+                LIEN ICONE AJOUT CLIENT --> AddModifClient
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+
+
+
+  <div class="container margBot">
+      <div class="row">
+          <div class="col">
+              <div class="row">
+
+                <?php
+                $requeteClient = "SELECT * FROM `client`";
+                if(!empty($_GET['condition'])){
+                      $requeteClient=$requeteClient+'?'+$_GET['condition'];
+                }
+                $resultatClient = $mysqli->query($requeteClient);
+                if($resultatClient!=NULL){
+                  while ($ligneClient = $resultatClient->fetch_assoc()) {
+                    echo'
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                              <h4 class="card-title text-center">'.$ligneClient['nom'].' '.$ligneClient['prenom'].'</h4>
+                              <p class="card-text text-center">
+                                '.$ligneClient['date_naissance'].'<br/> '.$ligneClient['adresse'].'
+                              </p>
+                              <a class="btn btn-secondary btn-number col" href="Client.php">
+                                <i class="fa fa-user " aria-hidden="true">
+                                </i>
+                              </a>
+                            </div>
+                        </div>
+                    </div>
+                    ';
+                  }
+                }
+
+                 ?>
+
+
+
+
+
+
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+
 
 
 
