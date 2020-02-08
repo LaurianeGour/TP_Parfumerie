@@ -112,18 +112,7 @@ if($result!=null){
         </div>
       </div>
   </nav>
-  <div class="container">
-    <div class="row">
-        <div class="col">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-                    <li class="breadcrumb-item"><a href="category.html">Categorie</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Parfum</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
+ 
 </div>
 
     <div class="container">
@@ -192,13 +181,7 @@ if($result!=null){
                                     </tr>';
                                      ?>
                           </table>
-                          <div class="product_rassurance">
-                        <ul class="list-inline">
-                            <li class="list-inline-item"><i class="fa fa-truck fa-2x"></i><br/>Fast delivery</li>
-                            <li class="list-inline-item"><i class="fa fa-credit-card fa-2x"></i><br/>Secure payment</li>
-                            <li class="list-inline-item"><i class="fa fa-phone fa-2x"></i><br/>+33 1 22 54 65 60</li>
-                        </ul>
-                    </div>
+                        
                     </div>
                     
                 </div>
