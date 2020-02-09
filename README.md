@@ -52,11 +52,11 @@
 		- BarNav -> fait (modif à prévoir à la fin -> lien vers les autres pages)
 		- Barre du bas -> fait (modif à prévoir à la fin -> lien vers les autres pages)
 		
-		- AddModifClient.php	 -> fait	
+		- AddModifClient.php -> fait	
 		- ListeClients.php -> fait
-		
-		- InfoClient -> en cours
+		- InfoClient -> fait
 	
+		- LseCommandeClient.php -> en cours
 
 
 	Abdou :
