@@ -222,6 +222,18 @@ if($result!=null){
   <input type="checkbox" id="sephora" name="sephora"
          checked>
   <label for="sephora">Sephora</label>
+  <input type="checkbox" id="Lancôme" name="Lancôme"
+         checked>
+  <label for="Lancôme">Lancôme</label>
+  <input type="checkbox" id="Dior" name="Dior"
+         checked>
+  <label for="Dior">Dior</label>
+  <input type="checkbox" id="Armani" name="Armani"
+         checked>
+  <label for="Armani">Armani</label>
+  <input type="checkbox" id="Nocibé" name="Nocibé"
+         checked>
+  <label for="Nocibé">Nocibé</label>
 </div>
 
                         </li>
@@ -233,6 +245,18 @@ if($result!=null){
   <input type="checkbox" id="aromatique" name="aromatique"
          checked>
   <label for="aromatique">Aromatique</label>
+    <input type="checkbox" id="Boisé" name="Boisé"
+         checked>
+  <label for="Boisé">Boisé</label>
+  <input type="checkbox" id="Floral" name="Floral"
+         checked>
+  <label for="Floral">Floral</label>
+  <input type="checkbox" id="Fruité" name="Fruité"
+         checked>
+  <label for="Fruité">Fruité</label>
+  <input type="checkbox" id="Chypré" name="Chypré"
+         checked>
+  <label for="Chypré">Chypré</label>
 </div>
 </li>   
                 </ul>
@@ -240,109 +264,35 @@ if($result!=null){
           
         </div>
         <div class="col">
-            <div class="row">
+        <div class="row">
+        <?php
+                          $requete = 'SELECT a.id_produit, lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo,a.prix_vente, f.nom_vendeur FROM article a inner join fournisseur f on f.id_fournisseur=a.id_fournisseur inner join produit p on a.id_produit=p.id_produit inner join type_produit ty
+                          on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque ';
+
+                          $resultat = $mysqli->query($requete);
+                          while ($ligne = $resultat->fetch_assoc()) {
+                            echo'
+           
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                        <img class="card-img-top" src="'.$ligne["photo"].'" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h4 class="card-title"><a href="product.html" title="View Product">'.$ligne['nom_article'].'</a></h4>
+                            <p class="card-text"> By: '.$ligne['nom_vendeur'].' </p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
+                                    <p class="btn btn-danger btn-block">'.$ligne['prix_vente'].' &nbsp;$ </p>
                                 </div>
                                 <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
+                                    <a href="InfoProduits.php?Id='.$ligne['id_produit'].' " class="btn btn-success btn-block">Add to cart</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="row">
-                                <div class="col">
-                                    <p class="btn btn-danger btn-block">99.00 $</p>
-                                </div>
-                                <div class="col">
-                                    <a href="#" class="btn btn-success btn-block">Add to cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ';
+              }
+              ?>
                 <div class="col-12">
                     <nav aria-label="...">
                         <ul class="pagination">

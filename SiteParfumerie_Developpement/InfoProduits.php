@@ -192,7 +192,7 @@ if($result!=null){
 
 
     <div class="container mb-4 margBot">
-        <div class="class="card bg-light mb-3"">
+        <div class="card bg-light mb-3">
             <div class="col-12">
                 <div class="table-responsive">
                     <table class="table table-striped">
