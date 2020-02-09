@@ -42,10 +42,8 @@
 		- BarNav -> fait
 		- Barre du bas -> fait
 		- AddModifClient.php	 -> fait	
+		- ListeClients.php -> fait
 
-		- ListeClients.php -> Commencé
-				
-		- AddModifProduit.html
 
 	Lilian :
 			
