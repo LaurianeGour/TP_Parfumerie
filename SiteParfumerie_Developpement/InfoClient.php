@@ -127,7 +127,7 @@ if($result!=null){
                       Modifier
                     </i>
                   </a>
-                  <a class="btn btn-secondary btn-number" href="ExeConnectionClient.php">
+                  <a class="btn btn-secondary btn-number" href="<?php echo "ExeConnectionClient.php?Id=". $_GET['Id'] ?>">
                     <i class="fa fa-sign-in" aria-hidden="true">
                       Commander pour le client
                     </i>
@@ -140,7 +140,7 @@ if($result!=null){
                 <p>Nom : '.utf8_encode ($user['nom']).'</p>
                 <p>Prénom : '.utf8_encode ($user['prenom']).'</p>
                 <p>Date de naissance : '.utf8_encode ($user['date_naissance']).'</p>
-                <p>Adresse : '.utf8_encode ($user['adresse']).'</p>
+                <p>Adresse de facturation : '.utf8_encode ($user['adresse']).'</p>
                 <p>Montant dépot : '.utf8_encode ($user['montant_depot']).'</p>
               ';
               ?>
@@ -171,9 +171,9 @@ if($result!=null){
                       <td class='text-center'>".$CommandePassee['date_heure']."</td>
                       <td class='text-center'>".$CommandePassee['nbArticles']."</td>
                       <td>
-                        <button type='button' data-toggle='modal' data-target='#infos' class='btn btn-secondary'>
+                        <a href='' data-toggle='modal' data-target='#productModal' class='btn btn-secondary'>
                           <i class='fa fa-barcode'></i>
-                        </button>
+                        </a>
                       </td>
                     </tr>
               ";
@@ -183,9 +183,9 @@ if($result!=null){
                         <td class="text-center">'.$CommandePassee['date_heure'].'</td>
                         <td class="text-center">'.$CommandePassee['nbArticles'].'</td>
                         <td>
-                          <button type="button" data-toggle="modal" data-target="#infos" class="btn btn-secondary">
+                          <a href="" data-toggle="modal" data-target="#productModal" class="btn btn-secondary">
                             <i class="fa fa-barcode"></i>
-                          </button>
+                          </a>
                         </td>
                       </tr>
                       ';
@@ -197,9 +197,6 @@ if($result!=null){
               echo"<p>Aucune commande n'a été passé par le client pour le moment</p>";
             }
             ?>
-
-
-
             </div>
           </div>
         </div>
@@ -238,14 +235,28 @@ if($result!=null){
       </div>
     </footer>
 
-
-    <div class="modal" id="infos">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <img src="img/Facture1.jpg" alt="Facture">
+    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Facture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img class="img-fluid" src="img/Facture2.jpg" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
+
 
   </body>
 </html>
