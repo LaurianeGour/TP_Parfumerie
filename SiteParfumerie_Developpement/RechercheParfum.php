@@ -23,6 +23,9 @@ if($result!=null){
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css">  
+<script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script>
+
+	<script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script>
 
 </head>
 <body>
@@ -117,19 +120,36 @@ if($result!=null){
     <div class="row">
         <div class="col-12 col-sm-3">
             <div class="card bg-light mb-3">
-                <div class="card-header bg-grey "> Trier par: </div>
-                <ul class="list-group category_block">Prix:   <div data-role="rangeslider">
-     
+                <div class="card-header bg-grey "> Trier par: </div> 
+                <ul class="list-group category_block">Prix: 
+<form class="form_slider">
+    <div data-role="rangeslider">
+   
         <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40" data-popup-enabled="true" data-show-value="true">
+   
         <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80" data-popup-enabled="true" data-show-value="true">
     </div>
-                  
+</form>
                 </ul>
                 <ul class="list-group category_block">Marque: 
-                    <li class="list-group-item">x</li>   
+                <li class="list-group-item">   
+                <div>
+  <input type="checkbox" id="sephora" name="sephora"
+         checked>
+  <label for="sephora">Sephora</label>
+</div>
+
+                        </li>
+
+
                 </ul>
                 <ul class="list-group category_block">Famille Olfactive: 
-                    <li class="list-group-item">x</li>   
+                    <li class="list-group-item">               <div>
+  <input type="checkbox" id="aromatique" name="aromatique"
+         checked>
+  <label for="aromatique">Aromatique</label>
+</div>
+</li>   
                 </ul>
             </div>
           
@@ -300,6 +320,8 @@ if($result!=null){
 <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-
+<script type="text/javascript">  
+$('input').popup(); 
+</script>
 </body>
 </html>
