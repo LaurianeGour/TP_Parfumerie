@@ -153,7 +153,7 @@
                                 '.$ligneClient['date_naissance'].'<br/> '.$ligneClient['adresse'].'
                               </p>
                               <div class="posBot">
-                                <a class="btn btn-secondary btn-number col " href="Client.php?Id='.$ligneClient['id_client'].'">
+                                <a class="btn btn-secondary btn-number col " href="InfoClient.php?Id='.$ligneClient['id_client'].'">
                                   <i class="fa fa-user " aria-hidden="true">
                                   </i>
                                 </a>

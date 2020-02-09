@@ -110,9 +110,14 @@
 
 
   <?php
-  $requete = "SELECT * FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
-  $resultat = $mysqli->query($requete);
-  $val=$resultat->fetch_assoc();
+  $val;
+  if(empty($_GET['Id'])){
+    $val=null;
+  }else{
+    $requete = "SELECT * FROM `client` WHERE `id_client`=".$_GET['Id'].";";
+    $resultat = $mysqli->query($requete);
+    $val=$resultat->fetch_assoc();
+  }
    ?>
 
 
