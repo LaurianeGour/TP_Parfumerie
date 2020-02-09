@@ -277,14 +277,14 @@ if($result!=null){
                     <div class="card">
                         <img class="card-img-top" src="'.$ligne["photo"].'" alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title"><a href="product.html" title="View Product">'.$ligne['nom_article'].'</a></h4>
+                            <h4 class="card-title"><a href="InfoProduits.php?Id='.$ligne['id_produit'].' " title="View Product">'.$ligne['nom_article'].'</a></h4>
                             <p class="card-text"> By: '.$ligne['nom_vendeur'].' </p>
                             <div class="row">
                                 <div class="col">
                                     <p class="btn btn-danger btn-block">'.$ligne['prix_vente'].' &nbsp;$ </p>
                                 </div>
                                 <div class="col">
-                                    <a href="InfoProduits.php?Id='.$ligne['id_produit'].' " class="btn btn-success btn-block">Add to cart</a>
+                                    <a href="Panier.php " class="btn btn-success btn-block">Add to cart</a>
                                 </div>
                             </div>
                         </div>
