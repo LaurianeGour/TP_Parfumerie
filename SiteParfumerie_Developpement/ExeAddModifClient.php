@@ -12,8 +12,8 @@
   $Adresse = $_POST["Address"];
   $Naissance = $_POST["Birth"];
   $Depot;
-  if (!isset($_POST["Depot"])){
-    $Depot = 0;
+  if (empty($_POST["Depot"])){
+    $Depot = 0.0;
   }else{
     $Depot = $_POST["Depot"];
   }
