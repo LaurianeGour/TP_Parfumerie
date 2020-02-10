@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  Dim 09 fév. 2020 à 18:44
--- Version du serveur :  5.7.17
--- Version de PHP :  5.6.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 10, 2020 at 08:16 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.2.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,17 +19,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `bd_parfumerie`
+-- Database: `bd_parfumerie`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `article`
+-- Table structure for table `article`
 --
 
-CREATE TABLE `article` (
-  `id_article` int(11) NOT NULL,
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `id_article` int(11) NOT NULL AUTO_INCREMENT,
   `id_fournisseur` int(11) NOT NULL,
   `id_produit` int(11) NOT NULL,
   `id_volume` int(11) NOT NULL,
@@ -38,11 +39,12 @@ CREATE TABLE `article` (
   `prix_achat` float NOT NULL,
   `prix_achat_remise` float NOT NULL,
   `prix_vente` float NOT NULL,
-  `prix_vente_remise` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `prix_vente_remise` float NOT NULL,
+  PRIMARY KEY (`id_article`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `article`
+-- Dumping data for table `article`
 --
 
 INSERT INTO `article` (`id_article`, `id_fournisseur`, `id_produit`, `id_volume`, `date_derniere_maj_prix`, `url`, `prix_achat`, `prix_achat_remise`, `prix_vente`, `prix_vente_remise`) VALUES
@@ -59,20 +61,22 @@ INSERT INTO `article` (`id_article`, `id_fournisseur`, `id_produit`, `id_volume`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `articles_commandes`
+-- Table structure for table `articles_commandes`
 --
 
-CREATE TABLE `articles_commandes` (
+DROP TABLE IF EXISTS `articles_commandes`;
+CREATE TABLE IF NOT EXISTS `articles_commandes` (
   `id_client` int(11) NOT NULL,
   `id_article` int(11) NOT NULL,
   `id_commande` int(11) NOT NULL,
   `quantite_commandee` int(11) NOT NULL,
   `prix_total` float NOT NULL,
-  `remarque` varchar(150) NOT NULL
+  `remarque` varchar(150) NOT NULL,
+  PRIMARY KEY (`id_client`,`id_article`,`id_commande`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `articles_commandes`
+-- Dumping data for table `articles_commandes`
 --
 
 INSERT INTO `articles_commandes` (`id_client`, `id_article`, `id_commande`, `quantite_commandee`, `prix_total`, `remarque`) VALUES
@@ -83,20 +87,22 @@ INSERT INTO `articles_commandes` (`id_client`, `id_article`, `id_commande`, `qua
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client`
+-- Table structure for table `client`
 --
 
-CREATE TABLE `client` (
-  `id_client` int(11) NOT NULL,
+DROP TABLE IF EXISTS `client`;
+CREATE TABLE IF NOT EXISTS `client` (
+  `id_client` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `date_naissance` varchar(50) NOT NULL,
   `adresse` varchar(50) NOT NULL,
-  `montant_depot` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `montant_depot` float NOT NULL,
+  PRIMARY KEY (`id_client`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_naissance`, `adresse`, `montant_depot`) VALUES
@@ -109,31 +115,35 @@ INSERT INTO `client` (`id_client`, `nom`, `prenom`, `date_naissance`, `adresse`,
 -- --------------------------------------------------------
 
 --
--- Structure de la table `client_actif`
+-- Table structure for table `client_actif`
 --
 
-CREATE TABLE `client_actif` (
-  `id_client_actif` int(11) NOT NULL
+DROP TABLE IF EXISTS `client_actif`;
+CREATE TABLE IF NOT EXISTS `client_actif` (
+  `id_client_actif` int(11) NOT NULL,
+  PRIMARY KEY (`id_client_actif`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commande`
+-- Table structure for table `commande`
 --
 
-CREATE TABLE `commande` (
-  `id_commande` int(11) NOT NULL,
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
   `id_concierge` int(11) NOT NULL,
   `date_heure` varchar(50) NOT NULL,
   `montant_total` float NOT NULL,
   `montant_depot` float NOT NULL,
   `montant_livraison` float NOT NULL,
-  `etat_commande` enum('Current being processed','Processed','Sent','Delivered','Canceled') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `etat_commande` enum('Current being processed','Processed','Sent','Delivered','Canceled') NOT NULL,
+  PRIMARY KEY (`id_commande`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `commande`
+-- Dumping data for table `commande`
 --
 
 INSERT INTO `commande` (`id_commande`, `id_concierge`, `date_heure`, `montant_total`, `montant_depot`, `montant_livraison`, `etat_commande`) VALUES
@@ -143,20 +153,22 @@ INSERT INTO `commande` (`id_commande`, `id_concierge`, `date_heure`, `montant_to
 -- --------------------------------------------------------
 
 --
--- Structure de la table `concierge`
+-- Table structure for table `concierge`
 --
 
-CREATE TABLE `concierge` (
-  `id_concierge` int(11) NOT NULL,
+DROP TABLE IF EXISTS `concierge`;
+CREATE TABLE IF NOT EXISTS `concierge` (
+  `id_concierge` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(50) NOT NULL,
   `date_naissance` varchar(50) NOT NULL,
   `adresse_mail` varchar(50) NOT NULL,
-  `mdp` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `mdp` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_concierge`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `concierge`
+-- Dumping data for table `concierge`
 --
 
 INSERT INTO `concierge` (`id_concierge`, `nom`, `prenom`, `date_naissance`, `adresse_mail`, `mdp`) VALUES
@@ -165,18 +177,20 @@ INSERT INTO `concierge` (`id_concierge`, `nom`, `prenom`, `date_naissance`, `adr
 -- --------------------------------------------------------
 
 --
--- Structure de la table `conversion_monnaie`
+-- Table structure for table `conversion_monnaie`
 --
 
-CREATE TABLE `conversion_monnaie` (
+DROP TABLE IF EXISTS `conversion_monnaie`;
+CREATE TABLE IF NOT EXISTS `conversion_monnaie` (
   `type_monnaie_entree` varchar(3) NOT NULL,
   `type_monnaie_sortie` varchar(3) NOT NULL,
   `taux_conversion_es` float NOT NULL,
-  `taux_conversion_se` float NOT NULL
+  `taux_conversion_se` float NOT NULL,
+  PRIMARY KEY (`type_monnaie_sortie`,`type_monnaie_entree`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `conversion_monnaie`
+-- Dumping data for table `conversion_monnaie`
 --
 
 INSERT INTO `conversion_monnaie` (`type_monnaie_entree`, `type_monnaie_sortie`, `taux_conversion_es`, `taux_conversion_se`) VALUES
@@ -186,30 +200,34 @@ INSERT INTO `conversion_monnaie` (`type_monnaie_entree`, `type_monnaie_sortie`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `facture`
+-- Table structure for table `facture`
 --
 
-CREATE TABLE `facture` (
-  `id_facture` int(11) NOT NULL,
+DROP TABLE IF EXISTS `facture`;
+CREATE TABLE IF NOT EXISTS `facture` (
+  `id_facture` int(11) NOT NULL AUTO_INCREMENT,
   `id_commande` int(11) NOT NULL,
   `date_heure` varchar(50) NOT NULL,
-  `montant_total` int(11) NOT NULL
+  `montant_total` int(11) NOT NULL,
+  PRIMARY KEY (`id_facture`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `fournisseur`
+-- Table structure for table `fournisseur`
 --
 
-CREATE TABLE `fournisseur` (
-  `id_fournisseur` int(11) NOT NULL,
+DROP TABLE IF EXISTS `fournisseur`;
+CREATE TABLE IF NOT EXISTS `fournisseur` (
+  `id_fournisseur` int(11) NOT NULL AUTO_INCREMENT,
   `abreviation` varchar(50) NOT NULL,
-  `nom_vendeur` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nom_vendeur` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_fournisseur`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `fournisseur`
+-- Dumping data for table `fournisseur`
 --
 
 INSERT INTO `fournisseur` (`id_fournisseur`, `abreviation`, `nom_vendeur`) VALUES
@@ -222,17 +240,19 @@ INSERT INTO `fournisseur` (`id_fournisseur`, `abreviation`, `nom_vendeur`) VALUE
 -- --------------------------------------------------------
 
 --
--- Structure de la table `liste_marque`
+-- Table structure for table `liste_marque`
 --
 
-CREATE TABLE `liste_marque` (
-  `id_marque` int(11) NOT NULL,
+DROP TABLE IF EXISTS `liste_marque`;
+CREATE TABLE IF NOT EXISTS `liste_marque` (
+  `id_marque` int(11) NOT NULL AUTO_INCREMENT,
   `abreviation` varchar(50) NOT NULL,
-  `nom_marque` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nom_marque` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_marque`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `liste_marque`
+-- Dumping data for table `liste_marque`
 --
 
 INSERT INTO `liste_marque` (`id_marque`, `abreviation`, `nom_marque`) VALUES
@@ -245,17 +265,19 @@ INSERT INTO `liste_marque` (`id_marque`, `abreviation`, `nom_marque`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `parfum_volume`
+-- Table structure for table `parfum_volume`
 --
 
-CREATE TABLE `parfum_volume` (
-  `id_volume` int(11) NOT NULL,
+DROP TABLE IF EXISTS `parfum_volume`;
+CREATE TABLE IF NOT EXISTS `parfum_volume` (
+  `id_volume` int(11) NOT NULL AUTO_INCREMENT,
   `contenance` int(11) NOT NULL,
-  `unitee` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `unitee` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_volume`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `parfum_volume`
+-- Dumping data for table `parfum_volume`
 --
 
 INSERT INTO `parfum_volume` (`id_volume`, `contenance`, `unitee`) VALUES
@@ -278,41 +300,46 @@ INSERT INTO `parfum_volume` (`id_volume`, `contenance`, `unitee`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `produit`
+-- Table structure for table `produit`
 --
 
-CREATE TABLE `produit` (
-  `id_produit` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `id_type_produit` int(11) NOT NULL,
   `id_marque` int(11) NOT NULL,
   `nom_article` varchar(50) NOT NULL,
   `ingredients` varchar(255) NOT NULL,
-  `photo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `photo` text NOT NULL,
+  `famille_olfactive` enum('Aromatique','Boisé','Floral','Fruité','Chypré') NOT NULL,
+  PRIMARY KEY (`id_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `produit`
+-- Dumping data for table `produit`
 --
 
-INSERT INTO `produit` (`id_produit`, `id_type_produit`, `id_marque`, `nom_article`, `ingredients`, `photo`) VALUES
-(1, 3, 1, 'La vie est belle', 'Aqua, Vanilla', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQdXFLKnFYgkCSeVnaSgo7f1vCe8uNLsJeq9RlaGmL3o54R96JP'),
-(2, 10, 2, 'Hypnose', 'AQUA / WATER / EAU- PARAFFIN- CERA ALBA / BEESWAX / CIRE DABEILLE- STEARIC ACID- COPERNICIA CERIFERA CERA / CARNAUBA WAX / CIRE DE CARNAUBA- ACACIA SENEGAL / ACACIA SENEGAL GUM- PALMITIC ACID-... ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgcv1azhnG5E0DxTw81uY8uyV4vEHEne-nYvSDeXCM2JnwT-73'),
-(3, 4, 3, 'N°5', 'ALCOHOL | AQUA (WATER) | PARFUM (FRAGRANCE) | BENZYL ALCOHOL | BENZYL BENZOATE | BENZYL CINNAMATE | BENZYL SALICYLATE | CINNAMYL ALCOHOL | CITRAL | CITRONELLOL | COUMARIN | EUGENOL | FARNESOL | ...', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/CHANEL_No5_parfum.jpg/320px-CHANEL_No5_parfum.jpg');
+INSERT INTO `produit` (`id_produit`, `id_type_produit`, `id_marque`, `nom_article`, `ingredients`, `photo`, `famille_olfactive`) VALUES
+(1, 3, 1, 'La vie est belle', 'Aqua, Vanilla', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQdXFLKnFYgkCSeVnaSgo7f1vCe8uNLsJeq9RlaGmL3o54R96JP', 'Aromatique'),
+(2, 10, 2, 'Hypnose', 'AQUA / WATER / EAU- PARAFFIN- CERA ALBA / BEESWAX / CIRE DABEILLE- STEARIC ACID- COPERNICIA CERIFERA CERA / CARNAUBA WAX / CIRE DE CARNAUBA- ACACIA SENEGAL / ACACIA SENEGAL GUM- PALMITIC ACID-... ', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTgcv1azhnG5E0DxTw81uY8uyV4vEHEne-nYvSDeXCM2JnwT-73', 'Floral'),
+(3, 4, 3, 'N°5', 'ALCOHOL | AQUA (WATER) | PARFUM (FRAGRANCE) | BENZYL ALCOHOL | BENZYL BENZOATE | BENZYL CINNAMATE | BENZYL SALICYLATE | CINNAMYL ALCOHOL | CITRAL | CITRONELLOL | COUMARIN | EUGENOL | FARNESOL | ...', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/CHANEL_No5_parfum.jpg/320px-CHANEL_No5_parfum.jpg', 'Aromatique');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `type_produit`
+-- Table structure for table `type_produit`
 --
 
-CREATE TABLE `type_produit` (
-  `id_type_produit` int(11) NOT NULL,
+DROP TABLE IF EXISTS `type_produit`;
+CREATE TABLE IF NOT EXISTS `type_produit` (
+  `id_type_produit` int(11) NOT NULL AUTO_INCREMENT,
   `abreviation` varchar(50) NOT NULL,
-  `type_produit` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `type_produit` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_type_produit`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `type_produit`
+-- Dumping data for table `type_produit`
 --
 
 INSERT INTO `type_produit` (`id_type_produit`, `abreviation`, `type_produit`) VALUES
@@ -326,143 +353,7 @@ INSERT INTO `type_produit` (`id_type_produit`, `abreviation`, `type_produit`) VA
 (10, 'MAS', 'Mascara'),
 (11, 'PAL', 'Palette'),
 (12, 'EPA', 'Eau de parfum');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `article`
---
-ALTER TABLE `article`
-  ADD PRIMARY KEY (`id_article`);
-
---
--- Index pour la table `articles_commandes`
---
-ALTER TABLE `articles_commandes`
-  ADD PRIMARY KEY (`id_client`,`id_article`,`id_commande`);
-
---
--- Index pour la table `client`
---
-ALTER TABLE `client`
-  ADD PRIMARY KEY (`id_client`);
-
---
--- Index pour la table `client_actif`
---
-ALTER TABLE `client_actif`
-  ADD PRIMARY KEY (`id_client_actif`);
-
---
--- Index pour la table `commande`
---
-ALTER TABLE `commande`
-  ADD PRIMARY KEY (`id_commande`);
-
---
--- Index pour la table `concierge`
---
-ALTER TABLE `concierge`
-  ADD PRIMARY KEY (`id_concierge`);
-
---
--- Index pour la table `conversion_monnaie`
---
-ALTER TABLE `conversion_monnaie`
-  ADD PRIMARY KEY (`type_monnaie_sortie`,`type_monnaie_entree`);
-
---
--- Index pour la table `facture`
---
-ALTER TABLE `facture`
-  ADD PRIMARY KEY (`id_facture`);
-
---
--- Index pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  ADD PRIMARY KEY (`id_fournisseur`);
-
---
--- Index pour la table `liste_marque`
---
-ALTER TABLE `liste_marque`
-  ADD PRIMARY KEY (`id_marque`);
-
---
--- Index pour la table `parfum_volume`
---
-ALTER TABLE `parfum_volume`
-  ADD PRIMARY KEY (`id_volume`);
-
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id_produit`);
-
---
--- Index pour la table `type_produit`
---
-ALTER TABLE `type_produit`
-  ADD PRIMARY KEY (`id_type_produit`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `article`
---
-ALTER TABLE `article`
-  MODIFY `id_article` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT pour la table `client`
---
-ALTER TABLE `client`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT pour la table `commande`
---
-ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT pour la table `concierge`
---
-ALTER TABLE `concierge`
-  MODIFY `id_concierge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT pour la table `facture`
---
-ALTER TABLE `facture`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `fournisseur`
---
-ALTER TABLE `fournisseur`
-  MODIFY `id_fournisseur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT pour la table `liste_marque`
---
-ALTER TABLE `liste_marque`
-  MODIFY `id_marque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT pour la table `parfum_volume`
---
-ALTER TABLE `parfum_volume`
-  MODIFY `id_volume` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT pour la table `type_produit`
---
-ALTER TABLE `type_produit`
-  MODIFY `id_type_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;COMMIT;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
