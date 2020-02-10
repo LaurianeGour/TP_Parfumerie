@@ -31,7 +31,7 @@ if($result!=null){
         <div class="collapse navbar-collapse justify-content-start">
           <img  style: height="50px" width="50px" src="img/logo.png" class="espace"/>
           <?php
-          $requete = "SELECT `nom`, `prenom` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+          $requete = "SELECT `nom`, `prenom`, id_client_actif FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
           $resultat = $mysqli->query($requete);
           $val=$resultat->fetch_assoc();
           if($val == null)
@@ -51,7 +51,7 @@ if($result!=null){
           {
             echo'
             <div class="espace">
-              <a href="PageClient.php" class="navbar-brand bouton">
+              <a href="InfoClient.php?Id='.$val['id_client_actif'].'" class="navbar-brand bouton">
                 <img class="icon" src="IconesSite\user.png">
                 '.$val['nom'].' '.$val['prenom'].'
               </a>
@@ -218,9 +218,9 @@ if($result!=null){
             <ul class="list-unstyled">
               <li class="interligne-2"><a href="RechercheProduits.php">Rechercher un produit</a></li>
               <li class="interligne-2"><a href="ListeClients.php">Liste Clients</a></li>
-              <li class="interligne-2"><a href="">Liste des commandes d'un client</a></li>
-              <li class="interligne-2"><a href="InfoProduits.php">Information produit</a></li>
-              <li class="interligne-2"><a href="">Information d'un client</a></li>
+              <li class="interligne-2"><a href="ListeCommandeClient.php?Id=8">Liste des commandes d'un client</a></li>
+              <li class="interligne-2"><a href="InfoProduits.php?Id=2">Information produit</a></li>
+              <li class="interligne-2"><a href="InfoClient.php?Id=8">Information d'un client</a></li>
               <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
               <li class="interligne-2"><a href="">Recapitulatif de commande</a></li>
               <li class="interligne-2"><a href="">Panier</a></li>
