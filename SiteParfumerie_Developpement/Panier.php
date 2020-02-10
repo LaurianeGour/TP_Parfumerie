@@ -64,7 +64,7 @@ if($result!=null){
             }
           ?>
         </div>
-        <form method="get" action="RechercheProduits.php" class="collapse navbar-collapse justify-content-center widthSearch">
+        <form method="get" action="RechercheProduit.php" class="collapse navbar-collapse justify-content-center widthSearch">
               <div class="input-group input-group-sm">
                   <input type="text" id="Name" name="Name" class="form-control" placeholder="Chercher un produit par nom">
                   <div class="input-group-append">
@@ -134,22 +134,7 @@ if($result!=null){
                             <td class="text-right">124,90 €</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
+                      
                         <tr>
                             <td></td>
                             <td></td>
@@ -184,7 +169,7 @@ if($result!=null){
                     <button class="btn btn-block btn-light">  <a href="RechercheProduit.php">Continuer Le Shopping</a></button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Passer La Commande</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">  <a href="ListeCommandeClient.php">Passer La Commande</button>
                 </div>
             </div>
         </div>

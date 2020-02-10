@@ -70,7 +70,7 @@ if($result!=null){
             }
           ?>
         </div>
-        <form method="get" action="RechercheProduits.php" class="collapse navbar-collapse justify-content-center widthSearch">
+        <form method="get" action="RechercheProduit.php" class="collapse navbar-collapse justify-content-center widthSearch">
               <div class="input-group input-group-sm">
                   <input type="text" id="Name" name="Name" class="form-control" placeholder="Chercher un produit par nom">
                   <div class="input-group-append">
@@ -257,7 +257,7 @@ if($result!=null){
             <h5>Plan du site</h5>
             <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
             <ul class="list-unstyled">
-              <li class="interligne-2"><a href="RechercheProduits.php">Rechercher un produit</a></li>
+              <li class="interligne-2"><a href="RechercheProduit.php">Rechercher un produit</a></li>
               <li class="interligne-2"><a href="ListeClients.php">Liste Clients</a></li>
               <li class="interligne-2"><a href="">Liste des commandes d'un client</a></li>
               <li class="interligne-2"><a href="InfoProduits.php">Information produit</a></li>

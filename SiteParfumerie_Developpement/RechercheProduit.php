@@ -68,7 +68,7 @@ if($result!=null){
           }
         ?>
       </div>
-      <form method="get" action="RechercheProduits.php" class="collapse navbar-collapse justify-content-center widthSearch">
+      <form method="get" action="RechercheProduit.php" class="collapse navbar-collapse justify-content-center widthSearch">
             <div class="input-group input-group-sm">
                 <input type="text" id="Name" name="Name" class="form-control" placeholder="Chercher un produit par nom">
                 <div class="input-group-append">
