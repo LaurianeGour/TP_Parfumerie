@@ -19,7 +19,7 @@
   }
 
 
-  $requete1 = "SELECT `id_client` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+  $requete1 = "SELECT `id_client` FROM `client` WHERE `id_client`=".$_GET['Id'];
   $resultat1 = $mysqli->query($requete1);
   $val1=$resultat1->fetch_assoc();
   $requete2;
