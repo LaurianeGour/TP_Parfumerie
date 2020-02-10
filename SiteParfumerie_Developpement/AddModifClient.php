@@ -110,13 +110,13 @@
 
 
   <?php
-  $val;
+  $valId;
   if(empty($_GET['Id'])){
-    $val=null;
+    $valId=null;
   }else{
     $requete = "SELECT * FROM `client` WHERE `id_client`=".$_GET['Id'].";";
     $resultat = $mysqli->query($requete);
-    $val=$resultat->fetch_assoc();
+    $valId=$resultat->fetch_assoc();
   }
    ?>
 
@@ -127,7 +127,7 @@
           <div class="col">
               <div class="card">
                 <?php
-                  if($val == null)
+                  if($valId == null)
                   {
                     echo'<div class="card-header bg-primary text-white">
                        Inscrire un nouveau client
@@ -135,7 +135,7 @@
                     ';
                   }else{
                     echo'<div class="card-header bg-primary text-white">
-                        Modifier le client: '.$val['nom'].' '.$val['prenom']
+                        Modifier le client: '.$valId['nom'].' '.$valId['prenom']
                        .'</div>
                     ';
                   }
@@ -143,11 +143,10 @@
 
                   <div class="card-body">
                     <?php
-                    echo'
-                      <form method="post" action="ExeAddModifClient.php?Id='.$_GET['Id'].'  ">';
-                            if($val == null)
-                            {
-                              echo'
+                          if($valId == null)
+                          {
+                            echo'
+                            <form method="post" action="ExeAddModifClient.php">
                               <div class="form-group">
                                   <label for="name">Prénom </label>
                                   <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="emailHelp" placeholder="Entrer Prenom" required>
@@ -167,25 +166,26 @@
                                   <input type="number" step="0.01" class="form-control" id="Depot" name="Depot" aria-describedby="emailHelp" placeholder="Entrer montant depot">
                               </div>
                               ';
-                            }else{
-                              echo'
+                          }else{
+                          echo'
+                            <form method="post" action="ExeAddModifClient.php?Id='.$_GET['Id'].' ">
                               <div class="form-group">
                                   <label for="Fname">Prénom</label>
-                                  <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="emailHelp" value="'.$val['prenom'].'" placeholder="Entrer prénom" required>
+                                  <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="emailHelp" value="'.$valId['prenom'].'" placeholder="Entrer prénom" required>
                                   <label for="Lname">Nom de famille</label>
-                                  <input type="text" class="form-control" id="Lname" name="Lname" aria-describedby="emailHelp" value="'.$val['nom'].'" placeholder="Entrer nom de famille" required>
+                                  <input type="text" class="form-control" id="Lname" name="Lname" aria-describedby="emailHelp" value="'.$valId['nom'].'" placeholder="Entrer nom de famille" required>
                               </div>
                               <div class="form-group">
                                   <label for="Address">Adresse</label>
-                                  <input type="text" class="form-control" id="Address" name="Address" aria-describedby="emailHelp" value="'.$val['adresse'].'" placeholder="Entrer adresse" required>
+                                  <input type="text" class="form-control" id="Address" name="Address" aria-describedby="emailHelp" value="'.$valId['adresse'].'" placeholder="Entrer adresse" required>
                               </div>
                               <div class="form-group">
                                   <label for="Birth">Date de naissance</label>
-                                  <input type="text" class="form-control" id="Birth" name="Birth" aria-describedby="emailHelp" value="'.$val['date_naissance'].'" placeholder="Entrer Date de naissance" required>
+                                  <input type="text" class="form-control" id="Birth" name="Birth" aria-describedby="emailHelp" value="'.$valId['date_naissance'].'" placeholder="Entrer Date de naissance" required>
                               </div>
                               <div class="form-group">
                                   <label for="Money">Montant dépot</label>
-                                  <input type="number" step="0.01" class="form-control" id="Depot" name="Depot" aria-describedby="emailHelp" value="'.$val['montant_depot'].'" placeholder="Entrer montant depot" required>
+                                  <input type="number" step="0.01" class="form-control" id="Depot" name="Depot" aria-describedby="emailHelp" value="'.$valId['montant_depot'].'" placeholder="Entrer montant depot" required>
                               </div>
                               ';
                             }
