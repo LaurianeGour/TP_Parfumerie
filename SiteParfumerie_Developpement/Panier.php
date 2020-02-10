@@ -118,10 +118,10 @@ if($result!=null){
                     <thead>
                         <tr>
                             <th scope="col"> </th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Available</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-right">Price</th>
+                            <th scope="col">Produit</th>
+                            <th scope="col">Disponibilité</th>
+                            <th scope="col" class="text-center">Quantité</th>
+                            <th scope="col" class="text-right">Prix</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -155,7 +155,7 @@ if($result!=null){
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Sub-Total</td>
+                            <td>Sous-Total</td>
                             <td class="text-right">255,90 €</td>
                         </tr>
                         <tr>
@@ -163,7 +163,7 @@ if($result!=null){
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Shipping</td>
+                            <td>Livraison</td>
                             <td class="text-right">6,90 €</td>
                         </tr>
                         <tr>
@@ -181,10 +181,10 @@ if($result!=null){
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                    <button class="btn btn-block btn-light">  <a href="RechercheProduit.php">Continue Shopping</a></button>
+                    <button class="btn btn-block btn-light">  <a href="RechercheProduit.php">Continuer Le Shopping</a></button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Passer La Commande</button>
                 </div>
             </div>
         </div>
