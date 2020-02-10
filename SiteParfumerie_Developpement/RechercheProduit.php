@@ -259,8 +259,11 @@ if($result!=null){
         <?php
                           $requete = 'SELECT a.id_produit, lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo,a.prix_vente, f.nom_vendeur FROM article a inner join fournisseur f on f.id_fournisseur=a.id_fournisseur inner join produit p on a.id_produit=p.id_produit inner join type_produit ty
                           on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque ';
-
+     if(!empty($_GET['Name'])){
+      $requete=$requete.'WHERE p.nom_article = "'.$_GET['Name'].'"';
+}
                           $resultat = $mysqli->query($requete);
+                          if($resultat!=NULL){
                           while ($ligne = $resultat->fetch_assoc()) {
                             echo'
            
@@ -282,7 +285,7 @@ if($result!=null){
                     </div>
                 </div>
                 ';
-              }
+              }}
               ?>
                 <div class="col-12">
                     <nav aria-label="...">
