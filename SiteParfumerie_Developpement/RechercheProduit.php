@@ -212,19 +212,19 @@ if($result!=null){
                 <div>
   <input type="checkbox" id="sephora" name="sephora"
          checked>
-  <label for="sephora">Sephora</label>
+  <label for="sephora">Sephora</label></br>
   <input type="checkbox" id="Lancôme" name="Lancôme"
          checked>
-  <label for="Lancôme">Lancôme</label>
+  <label for="Lancôme">Lancôme</label></br>
   <input type="checkbox" id="Dior" name="Dior"
          checked>
-  <label for="Dior">Dior</label>
+  <label for="Dior">Dior</label></br>
   <input type="checkbox" id="Armani" name="Armani"
          checked>
-  <label for="Armani">Armani</label>
+  <label for="Armani">Armani</label></br>
   <input type="checkbox" id="Nocibé" name="Nocibé"
          checked>
-  <label for="Nocibé">Nocibé</label>
+  <label for="Nocibé">Nocibé</label></br>
 </div>
 
                         </li>
@@ -235,19 +235,19 @@ if($result!=null){
                     <li class="list-group-item">               <div>
   <input type="checkbox" id="aromatique" name="aromatique"
          checked>
-  <label for="aromatique">Aromatique</label>
+  <label for="aromatique">Aromatique</label></br>
     <input type="checkbox" id="Boisé" name="Boisé"
          checked>
-  <label for="Boisé">Boisé</label>
+  <label for="Boisé">Boisé</label></br>
   <input type="checkbox" id="Floral" name="Floral"
          checked>
-  <label for="Floral">Floral</label>
+  <label for="Floral">Floral</label></br>
   <input type="checkbox" id="Fruité" name="Fruité"
          checked>
-  <label for="Fruité">Fruité</label>
+  <label for="Fruité">Fruité</label></br>
   <input type="checkbox" id="Chypré" name="Chypré"
          checked>
-  <label for="Chypré">Chypré</label>
+  <label for="Chypré">Chypré</label></br>
 </div>
 </li>   
                 </ul>
