@@ -22,11 +22,7 @@ if($result!=null){
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://demos.jquerymobile.com/1.4.2/css/themes/default/jquery.mobile-1.4.2.min.css">  
-<script src="https://demos.jquerymobile.com/1.4.2/js/jquery.js"></script>
-
-	<script src="https://demos.jquerymobile.com/1.4.2/js/jquery.mobile-1.4.2.min.js"></script>
-
+   
 </head>
 <body>
 
@@ -207,14 +203,9 @@ if($result!=null){
             <div class="card bg-light mb-3">
                 <div class="card-header bg-grey "> Trier par: </div> 
                 <ul class="list-group category_block">Prix: 
-<form class="form_slider">
-    <div data-role="rangeslider">
-   
-        <input type="range" name="range-1a" id="range-1a" min="0" max="100" value="40" data-popup-enabled="true" data-show-value="true">
-   
-        <input type="range" name="range-1b" id="range-1b" min="0" max="100" value="80" data-popup-enabled="true" data-show-value="true">
-    </div>
-</form>
+                <input type="number" min="200" max="100" step="1" width="20" id="input-number">
+
+    <input type="number" min="200" max="1000" step="1" id="input-number">
                 </ul>
                 <ul class="list-group category_block">Marque: 
                 <li class="list-group-item">   
@@ -355,8 +346,44 @@ if($result!=null){
 <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-<script type="text/javascript">  
-$('input').popup(); 
-</script>
+<script>
+   var select = document.getElementById('input-select');
+for ( var i = 200; i <= 1000; i++ ){
+var option = document.createElement("option");
+    option.text = i;
+    option.value = i;
+    select.appendChild(option);
+}
+var html5Slider = document.getElementById('html5');
+noUiSlider.create(html5Slider, {
+ start: [ 500, 800 ],
+ connect: true,
+ range: {
+    'min': 200,
+    'max': 1000
+ }
+});
+
+var inputNumber = document.getElementById('input-number');
+
+html5Slider.noUiSlider.on('update', function( values, handle ) {
+
+var value = values[handle];
+
+if ( handle ) {
+    inputNumber.value = value;
+} else {
+    select.value = Math.round(value);
+}
+});
+
+select.addEventListener('change', function(){
+    html5Slider.noUiSlider.set([this.value, null]);
+});
+
+inputNumber.addEventListener('change', function(){
+    html5Slider.noUiSlider.set([null, this.value]);
+});
+  </script>
 </body>
 </html>
