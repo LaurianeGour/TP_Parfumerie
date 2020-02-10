@@ -7,7 +7,7 @@
 # Bootstrap
 
 	lien de git :   https://github.com/T-PHP/Bootstrap-4-Ecommerce-Theme
-	Ouvrir Ã   l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
+	Ouvrir à  l'aide d'un serveur local (wamp / easyPhp)(dossier ~www)
 
 ### A faire
 
@@ -30,14 +30,13 @@
 - Garder le fichier boostrap du github en local sur son pc
 - CrÃ©er les pages de notre en local sur son PC en utilisant les mÃªme fichiers css que ceux du git
 - Une fois une page finie la mettre dans le repertoire git (SiteParfumerie_Developpement) pour que tout le monde puisse y accÃ¨der
-- Prevenir lorsqu'une modif a Ã©tÃ© faite sur le git et sur quel fichier
+- Prevenir lorsqu'une modif a été faite sur le git et sur quel fichier
 	
 ### Repartition des taches : 
 
 	Reste Ã  faire :
 		
 		- RecapCommandeClient.php
-		- LseCommandeClient.php
 
 
 
@@ -57,7 +56,7 @@
 		- ListeClients.php -> fait
 		- InfoClient -> fait
 	
-		- LseCommandeClient.php -> en cours
+		- LstCommandeClient.php -> A vérifier
 
 
 	Abdou :
