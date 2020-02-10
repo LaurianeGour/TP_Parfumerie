@@ -6,6 +6,7 @@
   mysqli_set_charset($mysqli, 'utf8');
   date_default_timezone_set('Europe/Paris');
 
+  echo $_GET['Id'];
   $requete = "DELETE FROM `client_actif`";
   $mysqli->query($requete);
 

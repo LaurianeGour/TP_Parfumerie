@@ -46,7 +46,7 @@
   echo''.$requete2;
   $mysqli->query($requete2);
 
-  header('Location: http://127.0.0.1:8080/PagesParfumerie/AddModifClient.php');
+  header('Location: http://127.0.0.1:8080/PagesParfumerie/AddModifClient.php?Id='.$_GET['Id'].'');
   exit();
 
   if(!mysqli_close($mysqli)) {

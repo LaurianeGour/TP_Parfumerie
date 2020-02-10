@@ -142,8 +142,9 @@
               ?>
 
                   <div class="card-body">
-                      <form method="post" action="ExeAddModifClient.php">
-                          <?php
+                    <?php
+                    echo'
+                      <form method="post" action="ExeAddModifClient.php?Id='.$_GET['Id'].'  ">';
                             if($val == null)
                             {
                               echo'
