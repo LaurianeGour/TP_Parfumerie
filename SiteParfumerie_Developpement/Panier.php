@@ -8,8 +8,11 @@
   INNER JOIN client_actif ca on x.id_client = ca.id_client_actif
    inner join commande c on x.id_commande=c.id_commande 
    where c.etat_commande="Current being processed"';  
-   
+ 
    $result=$mysqli->query($query);
+if($result!=null){
+  $artiicle=$result->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +138,8 @@
     
 
        if($result!=null){
-     
+     $pt=0 ;
+    
          while ($article = $result->fetch_assoc()) {
             echo'
                         <tr>
@@ -146,7 +150,7 @@
                             <td class="text-right">'.$article['prix_total'].'</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                        ';
+                        ';   $pt=$pt+$article['prix_total'];
                   }}
                 ?>
                         <tr>
@@ -154,8 +158,8 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td>Sous-Total</td><?php echo'
-                            <td class="text-right">'.$article['prix_total'].' €</td>';?>
+                            <td>Sous-Total</td>
+                            <td class="text-right"><?php echo $pt?> €</td>
                             <td>
                            </td>
                        
@@ -174,8 +178,8 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <?php echo'
-                            <td class="text-right">'.$article['prix_total'].' €</td>';?>
+                            
+                            <td class="text-right"> <?php echo $pt?> €</td>
                         </tr>
                     </tbody> 
                 </table>
