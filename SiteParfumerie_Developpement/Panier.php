@@ -1,14 +1,17 @@
 <?php
-$mysqli=new mysqli('localhost','root','','bd_parfumerie');
-$query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
- on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque';
+  $mysqli=new mysqli('localhost','root','','bd_parfumerie');
 
-$result=$mysqli->query($query);
-if($result!=null){
-  $product=$result->fetch_assoc();
-}
-
+      
+  $query='SELECT p.nom_article,p.photo ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
+  INNER JOIN article a on x.id_article = a.id_article 
+  INNER JOIN produit p on a.id_produit = p.id_produit 
+  INNER JOIN client_actif ca on x.id_client = ca.id_client_actif
+   inner join commande c on x.id_commande=c.id_commande 
+   where c.etat_commande="Current being processed"';  
+   
+   $result=$mysqli->query($query);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -101,7 +104,7 @@ if($result!=null){
             </div>
             <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
               <i class="fa fa-sign-out" aria-hidden="true">
-                Deconnection
+                Déconnecxion
               </i>
 
             </a>
@@ -125,23 +128,45 @@ if($result!=null){
                             <th> </th>
                         </tr>
                     </thead>
+                  
                     <tbody>
+
+                    <?php
+    
+
+       if($result!=null){
+     
+         while ($article = $result->fetch_assoc()) {
+            echo'
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
+                            <td><img src="'.$article["photo"].'" height="200" width="200" /> </td>
+                            <td>'.$article['nom_article'].' </td>
                             <td>In stock</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
+                            <td><input class="form-control" type="text" value="'.$article['quantite_commandee'].' "></td>
+                            <td class="text-right">'.$article['prix_total'].'</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                      
+                        ';
+                      }}
+                    ?>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Sous-Total</td>
-                            <td class="text-right">255,90 €</td>
+                            <td>
+                            <?php
+    
+
+  
+    $article = $result->fetch_assoc();
+         echo'
+       '.$article['prix_total'].'
+                     ';
+                   
+                 ?></td>
+                       
                         </tr>
                         <tr>
                             <td></td>
@@ -157,9 +182,9 @@ if($result!=null){
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
+                            <td class="text-right"><strong>140 €</strong></td>
                         </tr>
-                    </tbody>
+                    </tbody> 
                 </table>
             </div>
         </div>
