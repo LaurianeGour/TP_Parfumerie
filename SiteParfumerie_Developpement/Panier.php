@@ -146,26 +146,16 @@
                             <td class="text-right">'.$article['prix_total'].'</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                        ';
-                      }}
-                    ?>
+                        
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Sous-Total</td>
+                            <td class="text-right">'.$article['prix_total'].' €</td>
                             <td>
-                            <?php
-    
-
-  
-    $article = $result->fetch_assoc();
-         echo'
-       '.$article['prix_total'].'
-                     ';
-                   
-                 ?></td>
+                           </td>
                        
                         </tr>
                         <tr>
@@ -174,7 +164,7 @@
                             <td></td>
                             <td></td>
                             <td>Livraison</td>
-                            <td class="text-right">6,90 €</td>
+                            <td class="text-right">0 €</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -182,9 +172,11 @@
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>140 €</strong></td>
+                            <td class="text-right"><strong>'.$article['prix_total'].' €</strong></td>
                         </tr>
-                    </tbody> 
+                    </tbody> ';
+                  }}
+                ?>
                 </table>
             </div>
         </div>
