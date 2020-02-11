@@ -1,5 +1,16 @@
 <?php
 $mysqli=new mysqli('localhost','root','','bd_parfumerie');
+$query='SELECT p.nom_article,p.photo,c.montant_livraison ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
+INNER JOIN article a on x.id_article = a.id_article 
+INNER JOIN produit p on a.id_produit = p.id_produit 
+INNER JOIN client_actif ca on x.id_client = ca.id_client_actif
+ inner join commande c on x.id_commande=c.id_commande 
+ where c.etat_commande="Current being processed"';  
+
+ $result=$mysqli->query($query);
+if($result!=null){
+$artiicle=$result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -219,7 +230,39 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
             <div class="card bg-light mb-3">
                 <div class="card-header bg-grey "> Description de la commande</div>
                 <div class="card-body bg-white">
-                    <p> </p> 
+                <?php
+    
+
+    if($result!=null){
+  $pt=0 ;
+$ml=0;
+      while ($article = $result->fetch_assoc()) {
+         echo'
+         <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Photo</th>
+      <th scope="col">Nom de l\'article</th>
+      <th scope="col">Quantité commandée</th>
+      <th scope="col">Prix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     
+      <td> <img src="'.$article["photo"].'" height="70" width="70" /> </td>
+      <td>'.$article['nom_article'].'</td>
+      <td>'.$article['quantite_commandee'].'</td>
+      <td>'.$article['prix_total'].'</td>
+    </tr>
+   
+  </tbody>
+</table>
+                     ';  $pt=$pt+$article['prix_total'];
+                     $ml=$article['montant_livraison'];
+               }}
+             ?><p> Le prix total à payer :  <?php echo $pt+$ml?> € </p>
+                                   <a href="RechercheProduit.php" class="btn btn-secondary btn-number" >Payer </a></div>
 
                 </div>
 
