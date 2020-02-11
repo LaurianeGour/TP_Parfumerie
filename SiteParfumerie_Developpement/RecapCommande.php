@@ -198,7 +198,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
                  <p> Nom et prénom: </p>
                 
         <?php
-          $requete = "SELECT `nom`, `prenom`,`adresse` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+          $requete = "SELECT `nom`, `prenom`,`adresse`,`id_client_actif` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
           $resultat = $mysqli->query($requete);
           $val=$resultat->fetch_assoc();
           if($val != null)
@@ -206,12 +206,12 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
             echo'
          <p> '.$val['nom'].' '.$val['prenom'].'</p>  
                  <p> Adresse: </p>
-                 <p> '.$val['adresse'].'</p> ';
+                 <p> '.$val['adresse'].'</p> 
+                
+                 <a href="AddModifClient.php?Id='.$val['id_client_actif'].' " class="btn btn-secondary btn-number" >Modifier Informations </a></div>
+                 ';
                 }
               ?>
-                <P> </P>
-                 <button type="submit" class="btn btn-secondary btn-number" >Modifier Informations </button></div>
-                
             </div>
 
         </div>
