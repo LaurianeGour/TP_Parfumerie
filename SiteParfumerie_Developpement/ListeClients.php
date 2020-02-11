@@ -179,35 +179,35 @@
   <!-- Footer : Lien non fonctionnels-->
 
   <footer class="text-light">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="justify-content-start espaceGrand">
-          <h5>Plan du site</h5>
-          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-          <ul class="list-unstyled">
-            <li class="interligne-2"><a href="RechercheProduit.php">Rechercher un produit</a></li>
-            <li class="interligne-2"><a href="ListeClients.php">Liste Clients</a></li>
-            <li class="interligne-2"><a href="ListeCommandeClient.php?Id=8">Liste des commandes d'un client</a></li>
-            <li class="interligne-2"><a href="InfoProduits.php?Id=2">Information produit</a></li>
-            <li class="interligne-2"><a href="InfoClient.php?Id=8">Information d'un client</a></li>
-            <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
-            <li class="interligne-2"><a href="">Recapitulatif de commande</a></li>
-            <li class="interligne-2"><a href="">Panier</a></li>
-          </ul>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="justify-content-start espaceGrand">
+              <h5>Plan du site</h5>
+              <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+              <ul class="list-unstyled">
+                <li class="interligne-2"><a href="RechercheProduit.php">Rechercher un produit</a></li>
+                <li class="interligne-2"><a href="ListeClients.php">Liste Clients</a></li>
+                <li class="interligne-2"><a href="ListeCommandeClient.php?Id=8">Liste des commandes d'un client</a></li>
+                <li class="interligne-2"><a href="InfoProduits.php?Id=2">Information produit</a></li>
+                <li class="interligne-2"><a href="InfoClient.php?Id=8">Information d'un client</a></li>
+                <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
+                <li class="interligne-2"><a href="RecapCommande.php">Recapitulatif de commande</a></li>
+                <li class="interligne-2"><a href="Panier.php">Panier</a></li>
+              </ul>
+            </div>
+            <div class="justify-content-end">
+              <h5>Equipe Projet</h5>
+              <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+              <ul class="list-unstyled">
+                <li class="interligne-2"><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
+                <li class="interligne-2"><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
+                <li class="interligne-2"><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
+                <li class="interligne-2"><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="justify-content-end">
-          <h5>Contact</h5>
-          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-          <ul class="list-unstyled">
-            <li class="interligne-2"><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
-            <li class="interligne-2"><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
-            <li class="interligne-2"><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
-            <li class="interligne-2"><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
+      </footer>
 
 
 </body>
