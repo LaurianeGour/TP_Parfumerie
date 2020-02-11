@@ -199,6 +199,7 @@ if($result!=null){
                     <thead class="thead-light">
                             <tr>
                                 <th scope="col" class="text-center">Boutique</th>
+                                <th scope="col" class="text-center">Volume</th>
                                 <th scope="col" class="text-center">Prix de vente</th>
                                 <th scope="col" class="text-center">MAJ prix</th>
                                 <th scope="col" class="text-center">Quantite</th>
@@ -209,13 +210,14 @@ if($result!=null){
 
                        <tbody>
                           <?php
-                          $requete = "SELECT * FROM fournisseur NATURAL JOIN article WHERE id_produit=".$_GET['Id'].";";
+                          $requete = "SELECT * FROM fournisseur NATURAL JOIN article NATURAL JOIN parfum_volume WHERE id_produit=".$_GET['Id'].";";
                           $resultat = $mysqli->query($requete);
                           while ($ligne = $resultat->fetch_assoc()) {
                             echo'
                             <tr>
                               <form method="post" action="ExeAjoutPanier.php?Art='.$ligne['id_article'].'">
                                 <td scope="row" class="text-center">'.utf8_encode ($ligne['nom_vendeur']).'</td>
+                                <td scope="row" class="text-center">'.$ligne['contenance'].' '.$ligne['unitee'].'</td>
                                 <td scope="row" class="text-center">'.$ligne['prix_vente'].'</td>
                                 <td scope="row" class="text-center">'.$ligne['date_derniere_maj_prix'].'</td>
                                 <td scope="row" style="align:center">
