@@ -225,7 +225,7 @@ if($result!=null){
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="input-box text-center"  id="quantity" name="quantity" min="1" max="100" value="1">
+                                    <input type="text" class="input-box text-center" id='.$ligne['nom_vendeur'].' name='.$ligne['nom_vendeur'].' min="0" max="<%=listp.get(i).getQuantity()%>" value="1">
                                     <div class="input-group-append">
                                         <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
                                             <i class="fa fa-plus"></i>

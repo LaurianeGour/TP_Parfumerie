@@ -105,7 +105,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnection
+              Déconnexion
             </i>
 
           </a>
@@ -278,7 +278,7 @@ if($result!=null){
                                     <p class="btn btn-danger btn-block">'.$ligne['prix_vente'].' &nbsp;$ </p>
                                 </div>
                                 <div class="col">
-                                    <a href="Panier.php " class="btn btn-success btn-block">Add to cart</a>
+                                    <a href="Panier.php " class="btn btn-success btn-block">Ajouter au panier</a>
                                 </div>
                             </div>
                         </div>
