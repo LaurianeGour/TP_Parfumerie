@@ -100,7 +100,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnection
+              Deconnexion
             </i>
           </a>
         </div>
@@ -127,7 +127,7 @@ if($result!=null){
                       Modifier
                     </i>
                   </a>
-                  <a class="btn btn-secondary btn-number" href="<?php echo "ExeConnectionClient.php?Id=". $_GET['Id'] ?>">
+                  <a class="btn btn-secondary btn-number" href="<?php echo "ExeConnexionClient.php?Id=". $_GET['Id'] ?>">
                     <i class="fa fa-sign-in" aria-hidden="true">
                       Commander pour le client
                     </i>

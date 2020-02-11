@@ -2,14 +2,17 @@
   $mysqli=new mysqli('localhost','root','','bd_parfumerie');
 
       
-  $query='SELECT p.nom_article,p.photo ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
+  $query='SELECT p.nom_article,p.photo,c.montant_livraison ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
   INNER JOIN article a on x.id_article = a.id_article 
   INNER JOIN produit p on a.id_produit = p.id_produit 
   INNER JOIN client_actif ca on x.id_client = ca.id_client_actif
    inner join commande c on x.id_commande=c.id_commande 
    where c.etat_commande="Current being processed"';  
-   
+ 
    $result=$mysqli->query($query);
+if($result!=null){
+  $artiicle=$result->fetch_assoc();
+}
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +138,8 @@
     
 
        if($result!=null){
-     
+     $pt=0 ;
+   $ml=0;
          while ($article = $result->fetch_assoc()) {
             echo'
                         <tr>
@@ -146,14 +150,17 @@
                             <td class="text-right">'.$article['prix_total'].'</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
-                        
+                        ';   $pt=$pt+$article['prix_total'];
+                        $ml=$article['montant_livraison'];
+                  }}
+                ?>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td>Sous-Total</td>
-                            <td class="text-right">'.$article['prix_total'].' €</td>
+                            <td class="text-right"><?php echo $pt?> €</td>
                             <td>
                            </td>
                        
@@ -164,19 +171,17 @@
                             <td></td>
                             <td></td>
                             <td>Livraison</td>
-                            <td class="text-right">0 €</td>
-                        </tr>
+                            <td class="text-right"><?php echo $ml?>  €</td>
                         <tr>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><strong>'.$article['prix_total'].' €</strong></td>
+                            
+                            <td class="text-right"> <?php echo $pt+$ml?> €</td>
                         </tr>
-                    </tbody> ';
-                  }}
-                ?>
+                    </tbody> 
                 </table>
             </div>
         </div>

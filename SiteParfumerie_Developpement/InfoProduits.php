@@ -107,7 +107,7 @@ if($result!=null){
             </div>
             <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
               <i class="fa fa-sign-out" aria-hidden="true">
-                Deconnection
+                Deconnexion
               </i>
 
             </a>
@@ -151,7 +151,7 @@ if($result!=null){
                                 echo '
                                     <tr>
                                         <th style="color: grey;">Marque</th>
-                                        <th class="form-group" style="color: grey;">'.$product['nom_marque'].'</th>
+                                        <th class="form-group" style="color: grey;">'.utf8_encode($product['nom_marque']).'</th>
                                     </tr>
                                     <tr>
                                         <th style="color: grey;">Type</th>
@@ -203,7 +203,7 @@ if($result!=null){
                                 <th scope="col" class="text-center">MAJ prix</th>
                                 <th scope="col" class="text-center">Quantite</th>
                                 <th scope="col" class="text-center">Offre du marchand</th>
-                                <th> </th>
+                                <th scope="col" class="text-center">Ajout au panier</th>
                             </tr>
                         </thead>
 
@@ -214,27 +214,38 @@ if($result!=null){
                           while ($ligne = $resultat->fetch_assoc()) {
                             echo'
                             <tr>
-                              <td scope="row" class="text-center">'.$ligne['nom_vendeur'].'</td>
-                              <td scope="row" class="text-center">'.$ligne['prix_vente'].'</td>
-                              <td scope="row" class="text-center">'.$ligne['date_derniere_maj_prix'].'</td>
-                              <td scope="row" style="align:center">
+                              <form method="post" action="ExeAjoutPanier.php?Art='.$ligne['id_article'].'">
+                                <td scope="row" class="text-center">'.utf8_encode ($ligne['nom_vendeur']).'</td>
+                                <td scope="row" class="text-center">'.$ligne['prix_vente'].'</td>
+                                <td scope="row" class="text-center">'.$ligne['date_derniere_maj_prix'].'</td>
+                                <td scope="row" style="align:center">
 
-                                <div class="input-group ">
-                                    <div class="input-group-prepend">
-                                        <button type="button" class="quantity-left-minus btn btn-number "  data-type="minus" data-field="">
-                                            <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="input-box text-center" id='.$ligne['nom_vendeur'].' name='.$ligne['nom_vendeur'].' min="0" max="<%=listp.get(i).getQuantity()%>" value="1">
-                                    <div class="input-group-append">
-                                        <button type="button" class="quantity-right-plus btn btn-number" data-type="plus" data-field="">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
+                                  <div class="input-group ">
+                                      <div class="input-group-prepend">
+                                          <button type="button" class="quantity-left-minus btn btn-number" data-type="minus" data-field="">
+                                              <i class="fa fa-minus"></i>
+                                          </button>
+                                      </div>
+                                      <input type="text" class="input-box text-center"  id="quantity" name="quantity" min="1" max="100" value="1">
+                                      <div class="input-group-append">
+                                          <button type="button" class="quantity-right-plus btn btn-number"  data-type="plus" data-field="">
+                                              <i class="fa fa-plus"></i>
+                                          </button>
+                                      </div>
+                                  </div>
 
-                              </td>
-                              <td scope="row" class="text-center"> <a href="'.$ligne['url'].'">VOIR L\'OFFRE</a></td>
+                                </td>
+                                <td scope="row" class="text-center">
+                                  <a href="'.$ligne['url'].'">
+                                    VOIR L\'OFFRE
+                                  </a>
+                                </td>
+                                <td scope="row" class="text-center">
+                                  <button type="submit" class="btn btn-success btn-sm ml-3" >
+                                          <i class="fa fa-shopping-cart"></i>
+                                  </button>
+                                </td>
+                              </form>
                             </tr>
                             ';
                           }

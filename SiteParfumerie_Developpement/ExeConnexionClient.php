@@ -9,7 +9,7 @@
   $requete = 'INSERT INTO `client_actif`(`id_client_actif`) VALUES ('.$_GET['Id'].')';
   $mysqli->query($requete);
 
-  header('Location: http://127.0.0.1:8080/PagesParfumerie/InfoClient.php?Id='.$_GET['Id'].'');
+  header('Location: http://127.0.0.1:8080/Parfumerie/InfoClient.php?Id='.$_GET['Id'].'');
   exit();
 
 

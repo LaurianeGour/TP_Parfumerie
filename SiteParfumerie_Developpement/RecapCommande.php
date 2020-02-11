@@ -9,24 +9,20 @@ if($result!=null){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Site meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Recherche Produit</title>
+    <title>Free Bootstrap 4 Ecommerce Template</title>
     <!-- CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-
 </head>
 <body>
-
-
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark margBot">
     <div class="container">
@@ -105,7 +101,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnexion
+              Déconnexion
             </i>
 
           </a>
@@ -188,7 +184,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnexion
+              Deconnection
             </i>
 
           </a>
@@ -197,167 +193,102 @@ if($result!=null){
   </nav>
 
 
+
+
 <div class="container">
     <div class="row">
-        <div class="col-12 col-sm-3">
-            <div class="card bg-light mb-3">
-                <div class="card-header bg-grey "> Trier par: </div>
-                <ul class="list-group category_block">Prix:
-                <input type="number" min="200" max="100" step="1" width="20" id="input-number" placeholder="Prix mini">
-                <input type="number" min="200" max="1000" step="1" id="input-number" placeholder="Prix maxi">
-                </ul>
-                <ul class="list-group category_block">Marque:
-                  <li class="list-group-item">
-                    <div>
-                      <input type="checkbox" id="sephora" name="sephora" checked>
-                      <label for="sephora">Sephora</label></br>
-                      <input type="checkbox" id="Lancôme" name="Lancôme" checked>
-                      <label for="Lancôme">Lancôme</label></br>
-                      <input type="checkbox" id="Dior" name="Dior" checked>
-                      <label for="Dior">Dior</label></br>
-                      <input type="checkbox" id="Armani" name="Armani" checked>
-                      <label for="Armani">Armani</label></br>
-                      <input type="checkbox" id="Nocibé" name="Nocibé" checked>
-                      <label for="Nocibé">Nocibé</label></br>
-                    </div>
-                  </li>
-                </ul>
-                <ul class="list-group category_block">Famille Olfactive:
-                    <li class="list-group-item">
-                      <div>
-                        <input type="checkbox" id="aromatique" name="aromatique" checked>
-                        <label for="aromatique">Aromatique</label></br>
-                          <input type="checkbox" id="Boisé" name="Boisé" checked>
-                        <label for="Boisé">Boisé</label></br>
-                        <input type="checkbox" id="Floral" name="Floral" checked>
-                        <label for="Floral">Floral</label></br>
-                        <input type="checkbox" id="Fruité" name="Fruité" checked>
-                        <label for="Fruité">Fruité</label></br>
-                        <input type="checkbox" id="Chypré" name="Chypré" checked>
-                        <label for="Chypré">Chypré</label></br>
-                      </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <div class="col">
-          <div class="row">
-        <?php
-          $requete = "SELECT DISTINCT id_produit, nom_article, photo, nom_marque FROM liste_marque NATURAL JOIN produit";
-
-          if(!empty($_GET['Name'])){
-            $requete=$requete.'WHERE nom_article = "'.$_GET['Name'].'"';
-          }
-          $resultat = $mysqli->query($requete);
-          if($resultat!=NULL){
-            while ($ligne = $resultat->fetch_assoc()) {
-              $reqPrixMin = "SELECT MIN(prix_vente_remise) as prix FROM article WHERE id_produit =".$ligne['id_produit'].";";
-              $resultPrixMin = $mysqli->query($reqPrixMin);
-              $prix = $resultPrixMin->fetch_assoc();
-              echo'
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                          <img class="mx-auto" src="'.$ligne["photo"].'" alt="Card image cap" style="width:auto;height:150px;">
-                            <h4 class="card-title">
-                              <a href="InfoProduits.php?Id='.$ligne['id_produit'].' " title="View Product">
-                                '.utf8_encode ($ligne['nom_article']).'
-                              </a>
-                            </h4>
-                            <p class="card-text"> By: '.utf8_encode ($ligne['nom_marque']).' </p>
-                            <div class="row">
-                                <div class="col">
-                                    <a href="InfoProduits.php?Id='.$ligne['id_produit'].'" class="btn btn-success btn-block">Dès '.number_format ($prix['prix'] , 2).'&nbsp;$ </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contact us.
                 </div>
-                ';
-              }}
-              ?>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="6" required></textarea>
+                        </div>
+                        <div class="mx-auto">
+                        <button type="submit" class="btn btn-primary text-right">Submit</button></div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="col-12 col-sm-4">
+            <div class="card bg-light mb-3">
+                <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
+                <div class="card-body">
+                    <p>3 rue des Champs Elysées</p>
+                    <p>75008 PARIS</p>
+                    <p>France</p>
+                    <p>Email : email@example.com</p>
+                    <p>Tel. +33 12 56 11 51 84</p>
 
+                </div>
+
+            </div>
+        </div>
     </div>
 </div>
 
-
-    <!-- Footer -->
-    <footer class="text-light">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="justify-content-start espaceGrand">
-              <h5>Plan du site</h5>
-              <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-              <ul class="list-unstyled">
-                <li class="interligne-2"><a href="RechercheProduit.php">Rechercher un produit</a></li>
-                <li class="interligne-2"><a href="ListeClients.php">Liste Clients</a></li>
-                <li class="interligne-2"><a href="ListeCommandeClient.php?Id=8">Liste des commandes d'un client</a></li>
-                <li class="interligne-2"><a href="InfoProduits.php?Id=2">Information produit</a></li>
-                <li class="interligne-2"><a href="InfoClient.php?Id=8">Information d'un client</a></li>
-                <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
-                <li class="interligne-2"><a href="RecapCommande.php">Recapitulatif de commande</a></li>
-                <li class="interligne-2"><a href="Panier.php">Panier</a></li>
-              </ul>
-            </div>
-            <div class="justify-content-end">
-              <h5>Equipe Projet</h5>
-              <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
-              <ul class="list-unstyled">
-                <li class="interligne-2"><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
-                <li class="interligne-2"><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
-                <li class="interligne-2"><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
-                <li class="interligne-2"><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
-              </ul>
-            </div>
-          </div>
+<!-- Footer -->
+<footer class="text-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="justify-content-start espaceGrand">
+            <h5>Plan du site</h5>
+            <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+            <ul class="list-unstyled">
+              <li class="interligne-2"><a href="">Liste des clients</a></li>
+              <li class="interligne-2"><a href="">Liste Client</a></li>
+              <li class="interligne-2"><a href="">Liste des commandes d'un client</a></li>
+              <li class="interligne-2"><a href="InfoProduits.php">Information produit</a></li>
+              <li class="interligne-2"><a href="">Information client</a></li>
+              <li class="interligne-2"><a href="">Ajouter ou modifier un produit</a></li>
+              <li class="interligne-2"><a href="AddModifClient.php">Ajouter ou modifier un client</a></li>
+              <li class="interligne-2"><a href="">Recapitulatif de commande</a></li>
+                    </ul>
         </div>
-      </footer>
+
+          <div class="justify-content-end">
+          <h5>Contact</h5>
+          <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-50">
+          <ul class="list-unstyled">
+            <li class="interligne-2"><i class="fa fa-user mr-2"></i> AZHARI Abderrhaman</li>
+            <li class="interligne-2"><i class="fa fa-user mr-2"></i> DRIDI Ghada</li>
+            <li class="interligne-2"><i class="fa fa-user mr-2"></i> GOURAUD Lauriane</li>
+            <li class="interligne-2"><i class="fa fa-user mr-2"></i> VALLÉE Lilian</li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </footer>
 
 
 <!-- JS -->
 <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" type="text/javascript"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" type="text/javascript"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" type="text/javascript"></script>
-<script>
-   var select = document.getElementById('input-select');
-for ( var i = 200; i <= 1000; i++ ){
-var option = document.createElement("option");
-    option.text = i;
-    option.value = i;
-    select.appendChild(option);
-}
-var html5Slider = document.getElementById('html5');
-noUiSlider.create(html5Slider, {
- start: [ 500, 800 ],
- connect: true,
- range: {
-    'min': 200,
-    'max': 1000
- }
-});
 
-var inputNumber = document.getElementById('input-number');
-
-html5Slider.noUiSlider.on('update', function( values, handle ) {
-
-var value = values[handle];
-
-if ( handle ) {
-    inputNumber.value = value;
-} else {
-    select.value = Math.round(value);
-}
-});
-
-select.addEventListener('change', function(){
-    html5Slider.noUiSlider.set([this.value, null]);
-});
-
-inputNumber.addEventListener('change', function(){
-    html5Slider.noUiSlider.set([null, this.value]);
-});
-  </script>
 </body>
 </html>

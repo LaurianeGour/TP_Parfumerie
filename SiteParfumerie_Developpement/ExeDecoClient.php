@@ -10,7 +10,7 @@
   $requete = "DELETE FROM `client_actif`";
   $mysqli->query($requete);
 
-  header('Location: http://127.0.0.1:8080/PagesParfumerie/ListeClients.php');
+  header('Location: http://127.0.0.1:8080/Parfumerie/ListeClients.php');
   exit();
 
 
