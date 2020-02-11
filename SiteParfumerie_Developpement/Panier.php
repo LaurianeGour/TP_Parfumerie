@@ -150,7 +150,12 @@
                               </form>
                             </td>
                             <td class="text-right">'.$article['prix_total'].'</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            <td class="text-right">
+                              <a class="btn btn-sm btn-danger" href="ExeSupprProd.php?Id='.$article['id_article'].'">
+                                <i class="fa fa-trash">
+                                </i>
+                              </a>
+                            </td>
                         </tr>
                         ';
                         $pt=$pt+$article['prix_total'];
