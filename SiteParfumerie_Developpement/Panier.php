@@ -2,7 +2,7 @@
   $mysqli=new mysqli('localhost','root','','bd_parfumerie');
 
       
-  $query='SELECT p.nom_article,p.photo ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
+  $query='SELECT p.nom_article,p.photo,c.montant_livraison ,x.id_article,x.quantite_commandee,x.prix_total FROM articles_commandes x 
   INNER JOIN article a on x.id_article = a.id_article 
   INNER JOIN produit p on a.id_produit = p.id_produit 
   INNER JOIN client_actif ca on x.id_client = ca.id_client_actif
@@ -139,7 +139,7 @@ if($result!=null){
 
        if($result!=null){
      $pt=0 ;
-    
+   $ml=0;
          while ($article = $result->fetch_assoc()) {
             echo'
                         <tr>
@@ -151,6 +151,7 @@ if($result!=null){
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
                         ';   $pt=$pt+$article['prix_total'];
+                        $ml=$article['montant_livraison'];
                   }}
                 ?>
                         <tr>
@@ -170,8 +171,7 @@ if($result!=null){
                             <td></td>
                             <td></td>
                             <td>Livraison</td>
-                            <td class="text-right">0 €</td>
-                        </tr>
+                            <td class="text-right"><?php echo $ml?>  €</td>
                         <tr>
                             <td></td>
                             <td></td>
@@ -179,7 +179,7 @@ if($result!=null){
                             <td></td>
                             <td><strong>Total</strong></td>
                             
-                            <td class="text-right"> <?php echo $pt?> €</td>
+                            <td class="text-right"> <?php echo $pt+$ml?> €</td>
                         </tr>
                     </tbody> 
                 </table>
