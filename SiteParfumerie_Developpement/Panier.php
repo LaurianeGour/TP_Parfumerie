@@ -191,7 +191,7 @@ if($result!=null){
                     <button class="btn btn-block btn-light">  <a href="RechercheProduit.php">Continuer Le Shopping</a></button>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">  <a href="ListeCommandeClient.php">Passer La Commande</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">  <a  href="RecapCommande.php">Passer La Commande</button>
                 </div>
             </div>
         </div>
