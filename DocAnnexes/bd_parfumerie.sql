@@ -353,6 +353,28 @@ INSERT INTO `type_produit` (`id_type_produit`, `abreviation`, `type_produit`) VA
 (10, 'MAS', 'Mascara'),
 (11, 'PAL', 'Palette'),
 (12, 'EPA', 'Eau de parfum');
+
+--
+-- Structure de la table `facture`
+--
+
+DROP TABLE IF EXISTS `facture`;
+CREATE TABLE IF NOT EXISTS `facture` (
+  `id_facture` int(11) NOT NULL AUTO_INCREMENT,
+  `id_commande` int(11) NOT NULL,
+  `date_heure` varchar(50) NOT NULL,
+  `montant_total` int(11) NOT NULL,
+  PRIMARY KEY (`id_facture`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dﾃｩchargement des donnﾃｩes de la table `facture`
+--
+
+INSERT INTO `facture` (`id_facture`, `id_commande`, `date_heure`, `montant_total`) VALUES
+(1, 1, '09/02/2020 - 15h12', 134),
+(2, 2, '23/10/2019 - 18h32', 43),
+(3, 2, '23/10/2019 - 18h32', 42);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
