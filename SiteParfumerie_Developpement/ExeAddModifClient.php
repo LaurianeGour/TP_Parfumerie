@@ -17,23 +17,21 @@
   }else{
     $Depot = $_POST["Depot"];
   }
-
-
-  $requete1 = "SELECT `id_client` FROM `client` WHERE `id_client`=".$_GET['Id'];
-  $resultat1 = $mysqli->query($requete1);
-  $val1=$resultat1->fetch_assoc();
+  $idClient;
   $requete2;
-  $message;
-  if($val1 == null)
+  if(empty($_GET['Id']))
   {
-    echo'NewClient : ';
     $requete2 = "INSERT INTO `client`
           (`id_client`, `nom`, `prenom`, `date_naissance`, `adresse`, `montant_depot`)
           VALUES (DEFAULT,'".$Nom."','".$Prenom."','".$Naissance."','".$Adresse."','".$Depot."')";
-          $message= "Un nouveau client été ajouté.";
-    echo''.$requete2;
+    $req= "SELECT MAX(id_client) as id FROM client";
+    $result = $mysqli->query($req);
+    $val = $result->fetch_assoc();
+    $idClient = $val['id'];
   }else{
-    echo'Modif Client: ';
+    $requete1 = "SELECT `id_client` FROM `client` WHERE `id_client`=".$_GET['Id'];
+    $resultat1 = $mysqli->query($requete1);
+    $val1=$resultat1->fetch_assoc();
     $requete2="UPDATE `client` SET
           `nom`= '".$Nom."',
           `prenom`='".$Prenom."',
@@ -41,11 +39,11 @@
           `adresse`='".$Adresse."',
           `montant_depot`= '".$Depot."'
            WHERE `id_client`= ".$val1['id_client'].";";
-           $message = "Mise à jour du client effectuée.";
+    $idClient = $_GET['Id'];
   }
   $mysqli->query($requete2);
 
-  header('Location: http://127.0.0.1:8080/Parfumerie/AddModifClient.php?Id='.$_GET['Id'].'');
+  header('Location: http://127.0.0.1:8080/Parfumerie/AddModifClient.php?Id='.$idClient.'');
   exit();
 
   if(!mysqli_close($mysqli)) {
