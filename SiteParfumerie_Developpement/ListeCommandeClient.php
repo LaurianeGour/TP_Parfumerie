@@ -22,7 +22,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
     <nav class="navbar navbar-expand-md navbar-dark bg-dark margBot">
       <div class="container">
         <div class="collapse navbar-collapse justify-content-start">
-          <img  style: height="50px" width="50px" src="img/logo.png" class="espace"/>
+          <img  style: height="50px" width="auto" src="img/logo.png" class="espace"/>
           <?php
           $requete = "SELECT `nom`, `prenom`, id_client_actif FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
           $resultat = $mysqli->query($requete);
@@ -93,7 +93,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnection
+              Deconnexion
             </i>
           </a>
         </div>
@@ -116,7 +116,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
                   <div class="col-12">
                       <div class="card margBot">
                           <div class="card-header bg-primary text-white">
-                            <i class="fa fa-envelope"></i> Liste détaillé des commandes passées par le client
+                            <i class="fa fa-tag"></i> Liste détaillé des commandes passées par le client
                           </div>
                           <div class="card-body">
                             <div class="row">
@@ -180,7 +180,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
               <div class="col">
                 <div class="card ">
                     <div class="card-header bg-primary text-white margBot">
-                      <i class="fa fa-envelope"></i> Liste des articles commandés par le client
+                      <i class="fa fa-shopping-cart"></i> Liste des articles commandés par le client
                     </div>
                     <div class="card-body">
                       <div class="col">
@@ -193,7 +193,7 @@ $mysqli=new mysqli('localhost','root','','bd_parfumerie');
                     <div class="card text-center">
                         <img src="'.$ligneLstArt['photo'].'" alt="Italian Trulli" style="width:100px;height:100px;">
                         <div class="card-body">
-                          <p>'.$ligneLstArt['nom_article'].' par '.$ligneLstArt['nom_marque'].'</p>
+                          <p>'.utf8_encode ($ligneLstArt['nom_article']).' par '.utf8_encode ($ligneLstArt['nom_marque']).'</p>
                           <a class="btn btn-secondary btn-number col " href="InfoProduits.php?Id='.$ligneLstArt['id_produit'].'">
                             <i class="fa fa-shopping-cart " aria-hidden="true">
                             </i>

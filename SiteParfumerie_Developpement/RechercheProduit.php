@@ -22,7 +22,7 @@ if($result!=null){
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-   
+
 </head>
 <body>
 
@@ -105,7 +105,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Déconnexion
+              Deconnexion
             </i>
 
           </a>
@@ -188,7 +188,7 @@ if($result!=null){
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnection
+              Deconnexion
             </i>
 
           </a>
@@ -201,84 +201,73 @@ if($result!=null){
     <div class="row">
         <div class="col-12 col-sm-3">
             <div class="card bg-light mb-3">
-                <div class="card-header bg-grey "> Trier par: </div> 
-                <ul class="list-group category_block">Prix: 
-                <input type="number" min="200" max="100" step="1" width="20" id="input-number">
-
-    <input type="number" min="200" max="1000" step="1" id="input-number">
+                <div class="card-header bg-grey "> Trier par: </div>
+                <ul class="list-group category_block">Prix:
+                <input type="number" min="200" max="100" step="1" width="20" id="input-number" placeholder="Prix mini">
+                <input type="number" min="200" max="1000" step="1" id="input-number" placeholder="Prix maxi">
                 </ul>
-                <ul class="list-group category_block">Marque: 
-                <li class="list-group-item">   
-                <div>
-  <input type="checkbox" id="sephora" name="sephora"
-         checked>
-  <label for="sephora">Sephora</label></br>
-  <input type="checkbox" id="Lancôme" name="Lancôme"
-         checked>
-  <label for="Lancôme">Lancôme</label></br>
-  <input type="checkbox" id="Dior" name="Dior"
-         checked>
-  <label for="Dior">Dior</label></br>
-  <input type="checkbox" id="Armani" name="Armani"
-         checked>
-  <label for="Armani">Armani</label></br>
-  <input type="checkbox" id="Nocibé" name="Nocibé"
-         checked>
-  <label for="Nocibé">Nocibé</label></br>
-</div>
-
-                        </li>
-
-
+                <ul class="list-group category_block">Marque:
+                  <li class="list-group-item">
+                    <div>
+                      <input type="checkbox" id="sephora" name="sephora" checked>
+                      <label for="sephora">Sephora</label></br>
+                      <input type="checkbox" id="Lancôme" name="Lancôme" checked>
+                      <label for="Lancôme">Lancôme</label></br>
+                      <input type="checkbox" id="Dior" name="Dior" checked>
+                      <label for="Dior">Dior</label></br>
+                      <input type="checkbox" id="Armani" name="Armani" checked>
+                      <label for="Armani">Armani</label></br>
+                      <input type="checkbox" id="Nocibé" name="Nocibé" checked>
+                      <label for="Nocibé">Nocibé</label></br>
+                    </div>
+                  </li>
                 </ul>
-                <ul class="list-group category_block">Famille Olfactive: 
-                    <li class="list-group-item">               <div>
-  <input type="checkbox" id="aromatique" name="aromatique"
-         checked>
-  <label for="aromatique">Aromatique</label></br>
-    <input type="checkbox" id="Boisé" name="Boisé"
-         checked>
-  <label for="Boisé">Boisé</label></br>
-  <input type="checkbox" id="Floral" name="Floral"
-         checked>
-  <label for="Floral">Floral</label></br>
-  <input type="checkbox" id="Fruité" name="Fruité"
-         checked>
-  <label for="Fruité">Fruité</label></br>
-  <input type="checkbox" id="Chypré" name="Chypré"
-         checked>
-  <label for="Chypré">Chypré</label></br>
-</div>
-</li>   
+                <ul class="list-group category_block">Famille Olfactive:
+                    <li class="list-group-item">
+                      <div>
+                        <input type="checkbox" id="aromatique" name="aromatique" checked>
+                        <label for="aromatique">Aromatique</label></br>
+                          <input type="checkbox" id="Boisé" name="Boisé" checked>
+                        <label for="Boisé">Boisé</label></br>
+                        <input type="checkbox" id="Floral" name="Floral" checked>
+                        <label for="Floral">Floral</label></br>
+                        <input type="checkbox" id="Fruité" name="Fruité" checked>
+                        <label for="Fruité">Fruité</label></br>
+                        <input type="checkbox" id="Chypré" name="Chypré" checked>
+                        <label for="Chypré">Chypré</label></br>
+                      </div>
+                    </li>
                 </ul>
             </div>
-          
         </div>
         <div class="col">
-        <div class="row">
+          <div class="row">
         <?php
-                          $requete = 'SELECT a.id_produit, lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo,a.prix_vente, f.nom_vendeur FROM article a inner join fournisseur f on f.id_fournisseur=a.id_fournisseur inner join produit p on a.id_produit=p.id_produit inner join type_produit ty
-                          on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque ';
-     if(!empty($_GET['Name'])){
-      $requete=$requete.'WHERE p.nom_article = "'.$_GET['Name'].'"';
-}
-                          $resultat = $mysqli->query($requete);
-                          if($resultat!=NULL){
-                          while ($ligne = $resultat->fetch_assoc()) {
-                            echo'
-           
+          $requete = "SELECT DISTINCT id_produit, nom_article, photo, nom_marque FROM liste_marque NATURAL JOIN produit";
+
+          if(!empty($_GET['Name'])){
+            $requete=$requete.'WHERE nom_article = "'.$_GET['Name'].'"';
+          }
+          $resultat = $mysqli->query($requete);
+          if($resultat!=NULL){
+            while ($ligne = $resultat->fetch_assoc()) {
+              $reqPrixMin = "SELECT MIN(prix_vente_remise) as prix FROM article WHERE id_produit =".$ligne['id_produit'].";";
+              $resultPrixMin = $mysqli->query($reqPrixMin);
+              $prix = $resultPrixMin->fetch_assoc();
+              echo'
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card">
-                        <img class="card-img-top" src="'.$ligne["photo"].'" alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="card-title"><a href="InfoProduits.php?Id='.$ligne['id_produit'].' " title="View Product">'.$ligne['nom_article'].'</a></h4>
-                            <p class="card-text"> By: '.$ligne['nom_vendeur'].' </p>
+                        <div class="card-body text-center">
+                          <img class="mx-auto" src="'.$ligne["photo"].'" alt="Card image cap" style="width:auto;height:150px;">
+                            <h4 class="card-title">
+                              <a href="InfoProduits.php?Id='.$ligne['id_produit'].' " title="View Product">
+                                '.utf8_encode ($ligne['nom_article']).'
+                              </a>
+                            </h4>
+                            <p class="card-text"> By: '.utf8_encode ($ligne['nom_marque']).' </p>
                             <div class="row">
                                 <div class="col">
-                                    <p class="btn btn-danger btn-block">'.$ligne['prix_vente'].' &nbsp;$ </p>
-                                </div>
-                                <div class="col">
-                                    <a href="Panier.php " class="btn btn-success btn-block">Ajouter au panier</a>
+                                    <a href="InfoProduits.php?Id='.$ligne['id_produit'].'" class="btn btn-success btn-block">Dès '.number_format ($prix['prix'] , 2).'&nbsp;$ </a>
                                 </div>
                             </div>
                         </div>
@@ -287,23 +276,6 @@ if($result!=null){
                 ';
               }}
               ?>
-                <div class="col-12">
-                    <nav aria-label="...">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
             </div>
         </div>
 

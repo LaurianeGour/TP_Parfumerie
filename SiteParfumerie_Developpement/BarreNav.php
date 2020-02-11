@@ -95,7 +95,7 @@
           </div>
           <a class="btn btn-secondary btn-number" href="ExeDecoConcierge.php"> <!--Voir si on laisse decoUser ou si on met une autre page -->
             <i class="fa fa-sign-out" aria-hidden="true">
-              Deconnection
+              Deconnexion
             </i>
           </a>
         </div>
