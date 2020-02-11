@@ -54,8 +54,8 @@
 
 
 
-//  header('Location: http://127.0.0.1:8080/Parfumerie/RechercheProduit.php');
-//  exit();
+  header('Location: http://127.0.0.1:8080/Parfumerie/RechercheProduit.php');
+  exit();
 
   if(!mysqli_close($mysqli)) {
     echo "Echec lors de la déconnexion à la base de données";
