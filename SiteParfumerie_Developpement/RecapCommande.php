@@ -1,13 +1,5 @@
 <?php
 $mysqli=new mysqli('localhost','root','','bd_parfumerie');
-$query='SELECT lm.nom_marque,ty.type_produit,p.nom_article,p.ingredients,p.photo FROM produit p inner join type_produit ty
- on ty.id_type_produit=p.id_type_produit inner join liste_marque lm on lm.id_marque=p.id_marque';
-
-$result=$mysqli->query($query);
-if($result!=null){
-  $product=$result->fetch_assoc();
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -198,51 +190,36 @@ if($result!=null){
 <div class="container">
     <div class="row">
         <div class="col">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col">
             <div class="card">
-                <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contact us.
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea class="form-control" id="message" rows="6" required></textarea>
-                        </div>
-                        <div class="mx-auto">
-                        <button type="submit" class="btn btn-primary text-right">Submit</button></div>
-                    </form>
-                </div>
+                <div class="card-header bg-grey ">Informations de livraison
+                </div> 
+                <div  class="card-body">
+               
+                 <p> Nom et prénom: </p>
+                
+        <?php
+          $requete = "SELECT `nom`, `prenom`,`adresse` FROM `client` INNER JOIN `client_actif` ON `id_client`=`id_client_actif`";
+          $resultat = $mysqli->query($requete);
+          $val=$resultat->fetch_assoc();
+          if($val != null)
+          {
+            echo'
+         <p> '.$val['nom'].' '.$val['prenom'].'</p>  
+                 <p> Adresse: </p>
+                 <p> '.$val['adresse'].'</p> ';
+                }
+              ?>
+                <P> </P>
+                 <button type="submit" class="btn btn-secondary btn-number" >Modifier Informations </button></div>
+                
             </div>
+
         </div>
-        <div class="col-12 col-sm-4">
+        <div class="col-12 col-sm-8">
             <div class="card bg-light mb-3">
-                <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
-                <div class="card-body">
-                    <p>3 rue des Champs Elysées</p>
-                    <p>75008 PARIS</p>
-                    <p>France</p>
-                    <p>Email : email@example.com</p>
-                    <p>Tel. +33 12 56 11 51 84</p>
+                <div class="card-header bg-grey "> Description de la commande</div>
+                <div class="card-body bg-white">
+                    <p> </p> 
 
                 </div>
 
